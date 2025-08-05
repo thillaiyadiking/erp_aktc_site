@@ -137,7 +137,7 @@
                             "SABB",
                             "Arab National Bank",
                             "Saudi National Bank",
-                            "Ajazira Bank",
+                            "Aljazira Bank",
                         ];                        ?>
                         <div class="form-group" app-field-wrapper="bank_fields">
                             <label for="bank_fields" class="control-label">Bank Details</label>
