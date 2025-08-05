@@ -135,8 +135,9 @@
                             "National Commercial Bank",
                             "Riyad Bank",
                             "SABB",
-                            "Arab National Bank"
-                            // Add more if needed
+                            "Arab National Bank",
+                            "Saudi National Bank",
+                            "Ajazira Bank",
                         ];                        ?>
                         <div class="form-group" app-field-wrapper="bank_fields">
                             <label for="bank_fields" class="control-label">Bank Details</label>
@@ -146,15 +147,15 @@
                                 <?php foreach ($bankDetails as $detail): ?>
                                     <div class="bank-group row mb-2">
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control iban-input" name="iban[]" placeholder="IBAN" required
+                                            <input type="text" class="form-control iban-input" name="iban[]" placeholder="IBAN"
                                                 value="<?= htmlspecialchars($detail['iban']) ?>">
                                         </div>
                                         <div class="col-md-3">
-                                            <input type="text" class="form-control" name="account[]" placeholder="Account" required
+                                            <input type="text" class="form-control" name="account[]" placeholder="Account"
                                                 value="<?= htmlspecialchars($detail['account']) ?>">
                                         </div>
                                         <div class="col-md-2">
-                                            <select class="form-control" name="bank_name[]" required>
+                                            <select class="form-control" name="bank_name[]">
                                                 <option value="">Select Bank</option>
                                                 <?php foreach ($banks as $bank): ?>
                                                     <option value="<?= $bank ?>" <?= ($detail['bank_name'] == $bank) ? 'selected' : '' ?>>
@@ -176,9 +177,7 @@
                             <a href="#" class="btn btn-success" onclick="addBankField(); return false;">
                                 <i class="fa fa-plus"></i> Add More
                             </a>
-                            <?php
-                            echo render_select_with_input_group('groups_in[]', $groups, ['id', 'name'], 'customer_groups', '', '<div class="input-group-btn"><a href="#" class="btn btn-default" data-toggle="modal" data-target="#customer_group_modal"><i class="fa fa-plus"></i></a></div>', ['multiple' => true, 'data-actions-box' => true], [], '', '', false);
-                            ?>
+
                         </div>
 
 
@@ -507,5 +506,5 @@
         });
     }
 
-    document.addEventListener('DOMContentLoaded', attachIbanPrefix);
+    // document.addEventListener('DOMContentLoaded', attachIbanPrefix);
 </script>
