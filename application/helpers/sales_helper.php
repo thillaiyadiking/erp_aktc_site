@@ -9,12 +9,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
  */
 function is_using_multiple_currencies($table = null)
 {
-    
+
     if (!$table) {
         $table = db_prefix() . 'invoices';
     }
 
-    $CI = & get_instance();
+    $CI = &get_instance();
     $CI->load->model('currencies_model');
     $currencies            = $CI->currencies_model->get();
     $total_currencies_used = 0;
@@ -196,7 +196,7 @@ function ajax_on_total_items()
  */
 function get_tax_by_id($id)
 {
-    $CI = & get_instance();
+    $CI = &get_instance();
     $CI->db->where('id', $id);
 
     return $CI->db->get(db_prefix() . 'taxes')->row();
@@ -208,7 +208,7 @@ function get_tax_by_id($id)
  */
 function get_tax_by_name($name)
 {
-    $CI = & get_instance();
+    $CI = &get_instance();
     $CI->db->where('name', $name);
 
     return $CI->db->get(db_prefix() . 'taxes')->row();
@@ -329,10 +329,12 @@ if (!function_exists('format_customer_info')) {
 
         $acceptsPrimaryContactDisplay = ['invoice', 'estimate', 'payment', 'credit_note'];
 
-        if (in_array($for, $acceptsPrimaryContactDisplay) &&
+        if (
+            in_array($for, $acceptsPrimaryContactDisplay) &&
             isset($data->client->show_primary_contact) &&
             $data->client->show_primary_contact == 1 &&
-            $primaryContactId = get_primary_contact_user_id($clientId)) {
+            $primaryContactId = get_primary_contact_user_id($clientId)
+        ) {
             $companyName = get_contact_full_name($primaryContactId) . '<br />' . $companyName;
         }
 
@@ -500,6 +502,7 @@ if (!function_exists('format_organization_info')) {
     {
         $format = get_option('company_info_format');
         $vat    = get_option('company_vat');
+        $cr_number    = get_option('cr_number');
 
         $format = _info_format_replace('company_name', '<b style="color:black" class="company-name-formatted">' . get_option('invoice_company_name') . '</b>', $format);
         $format = _info_format_replace('address', get_option('invoice_company_address'), $format);
@@ -510,7 +513,8 @@ if (!function_exists('format_organization_info')) {
         $format = _info_format_replace('country_code', get_option('invoice_company_country_code'), $format);
         $format = _info_format_replace('phone', get_option('invoice_company_phonenumber'), $format);
         $format = _info_format_replace('vat_number', $vat, $format);
-        $format = _info_format_replace('vat_number_with_label', $vat == '' ? '':_l('company_vat_number') . ': ' . $vat, $format);
+        $format = _info_format_replace('cr_number', $cr_number, $format);
+        $format = _info_format_replace('vat_number_with_label', $vat == '' ? '' : _l('company_vat_number') . ': ' . $vat, $format);
 
         $custom_company_fields = get_company_custom_fields();
 
@@ -556,10 +560,10 @@ function get_items_by_type($type, $id)
     return $CI->db->get()->result_array();
 }
 /**
-* Function that update total tax in sales table eq. invoice, proposal, estimates, credit note
-* @param  mixed $id
-* @return void
-*/
+ * Function that update total tax in sales table eq. invoice, proposal, estimates, credit note
+ * @param  mixed $id
+ * @return void
+ */
 function update_sales_total_tax_column($id, $type, $table)
 {
     $CI = &get_instance();
@@ -615,7 +619,7 @@ function update_sales_total_tax_column($id, $type, $table)
 
     $CI->db->where('id', $id);
     $CI->db->update($table, [
-            'total_tax' => $total_tax,
+        'total_tax' => $total_tax,
     ]);
 }
 
@@ -645,11 +649,11 @@ function _maybe_insert_post_item_tax($item_id, $post_item, $rel_id, $rel_type)
                         'rel_type' => $rel_type,
                     ]) == 0) {
                         $CI->db->insert(db_prefix() . 'item_tax', [
-                                'itemid'   => $item_id,
-                                'taxrate'  => $tax_rate,
-                                'taxname'  => $tax_name,
-                                'rel_id'   => $rel_id,
-                                'rel_type' => $rel_type,
+                            'itemid'   => $item_id,
+                            'taxrate'  => $tax_rate,
+                            'taxname'  => $tax_name,
+                            'rel_id'   => $rel_id,
+                            'rel_type' => $rel_type,
                         ]);
                         $affectedRows++;
                     }
@@ -679,15 +683,15 @@ function add_new_sales_item_post($item, $rel_id, $rel_type)
     $CI = &get_instance();
 
     $CI->db->insert(db_prefix() . 'itemable', [
-                    'description'      => $item['description'],
-                    'long_description' => nl2br($item['long_description']),
-                    'qty'              => $item['qty'],
-                    'rate'             => number_format($item['rate'], get_decimal_places(), '.', ''),
-                    'rel_id'           => $rel_id,
-                    'rel_type'         => $rel_type,
-                    'item_order'       => $item['order'],
-                    'unit'             => $item['unit'],
-                ]);
+        'description'      => $item['description'],
+        'long_description' => nl2br($item['long_description']),
+        'qty'              => $item['qty'],
+        'rate'             => number_format($item['rate'], get_decimal_places(), '.', ''),
+        'rel_id'           => $rel_id,
+        'rel_type'         => $rel_type,
+        'item_order'       => $item['order'],
+        'unit'             => $item['unit'],
+    ]);
 
     $id = $CI->db->insert_id();
 
@@ -772,8 +776,8 @@ function delete_taxes_from_item($item_id, $rel_type)
 {
     $CI = &get_instance();
     $CI->db->where('itemid', $item_id)
-    ->where('rel_type', $rel_type)
-    ->delete(db_prefix() . 'item_tax');
+        ->where('rel_type', $rel_type)
+        ->delete(db_prefix() . 'item_tax');
 
     return $CI->db->affected_rows() > 0 ? true : false;
 }

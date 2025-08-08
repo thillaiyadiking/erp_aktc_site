@@ -23,7 +23,6 @@ $tax_amount = 0;
 foreach ($items->taxes() as $tax) {
     $tax_amount =  $tax['total_tax'];
 }
-// dafs
 
 $invoiceDate = new DateTime(); // current date and time
 
