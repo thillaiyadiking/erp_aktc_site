@@ -503,25 +503,20 @@ if (!function_exists('format_organization_info')) {
         $format = get_option('company_info_format');
         $vat    = get_option('company_vat');
         $cr_number    = get_option('cr_number');
-
         $format = _info_format_replace('company_name', '<b style="color:black" class="company-name-formatted">' . get_option('invoice_company_name') . '</b>', $format);
         $format = _info_format_replace('address', get_option('invoice_company_address'), $format);
         $format = _info_format_replace('city', get_option('invoice_company_city'), $format);
         $format = _info_format_replace('state', get_option('company_state'), $format);
-
         $format = _info_format_replace('zip_code', get_option('invoice_company_postal_code'), $format);
         $format = _info_format_replace('country_code', get_option('invoice_company_country_code'), $format);
         $format = _info_format_replace('phone', get_option('invoice_company_phonenumber'), $format);
         $format = _info_format_replace('vat_number', $vat, $format);
-        $format = _info_format_replace('cr_number', $cr_number, $format);
+        $format = _info_format_replace('cr_number', $cr_number == '' ? '' : _l('company_cr_number') . ': ' . $cr_number, $format);
         $format = _info_format_replace('vat_number_with_label', $vat == '' ? '' : _l('company_vat_number') . ': ' . $vat, $format);
-
         $custom_company_fields = get_company_custom_fields();
-
         foreach ($custom_company_fields as $field) {
             $format = _info_format_custom_field($field['id'], $field['label'], $field['value'], $format);
         }
-
         $format = _info_format_custom_fields_check($custom_company_fields, $format);
         $format = _maybe_remove_first_and_last_br_tag($format);
 

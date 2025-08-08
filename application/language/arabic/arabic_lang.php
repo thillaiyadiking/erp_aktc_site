@@ -2924,6 +2924,7 @@ $lang['proposal_not_found']                                               = 'ا�
 $lang['new_task_assigned_non_user']                                       = 'تم تعيين مهمة جديدة لك -  %s ';
 $lang['no_child_found']                                                   = 'لا فرع  %s  العثور';
 $lang['company_vat_number']                                               = 'الرقم الضريبي';
+$lang['company_cr_number']                                               = 'الرقم الموحد';
 $lang['not_lead_assigned_from_form']                                      = 'يتم تعيين عميل محتمل جديد لك';
 $lang['not_lead_activity_assigned_from_form']                             = 'العميل المحتمل المعين لـ  %s ';
 $lang['form_allow_duplicate']                                             = 'السماح بتكرار  %s  ليتم ادراجها في قاعدة البيانات؟';

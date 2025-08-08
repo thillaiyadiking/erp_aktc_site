@@ -2908,6 +2908,7 @@ $lang['proposal_not_found']                                 = 'Proposal not foun
 $lang['new_task_assigned_non_user']                         = 'New task is assigned to you - %s';
 $lang['no_child_found']                                     = 'No Child %s Found';
 $lang['company_vat_number']                                 = 'VAT Number';
+$lang['company_cr_number']                                 = 'CR Number';
 $lang['not_lead_assigned_from_form']                        = 'New lead is assigned to you';
 $lang['not_lead_activity_assigned_from_form']               = 'Lead assigned to %s';
 $lang['form_allow_duplicate']                               = 'Allow duplicate %s to be inserted into database?';
@@ -3912,7 +3913,7 @@ $lang['payment_gateway_fee_fixed']                          = 'Fixed Fee';
 $lang['payment_attempt_amount']                             = 'Invoice Total';
 $lang['payment_attempt_fee']                                = 'Payment Fee';
 $lang['feature']                                            = 'Feature';
-$lang['capabilities']                                       = 'Capabilities'; 
+$lang['capabilities']                                       = 'Capabilities';
 
 //Branches
 $lang['branches']                                          = 'Branches';
@@ -3932,4 +3933,4 @@ $lang['Purchased_Employee']                                = 'Purchased Employee
 $lang['Recipient_Employee']                                = 'Recipient Employee';
 $lang['commercial_reg_num']                                = ' Commercial Registration Number';
 $lang['branch_info']                                       = 'Branch Information';
-$lang['is_supplier']                                       = 'Is supplier?';  
+$lang['is_supplier']                                       = 'Is supplier?';
