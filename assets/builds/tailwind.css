@@ -100,6 +100,7 @@
     display: inline-flex;
     font-size: .75rem;
     font-weight: 500;
+    font-family: Tajawal, sans-serif !important; /* Tajawal font */
     line-height: 1rem;
     padding: .25rem .625rem
 }
@@ -514,7 +515,8 @@ a.text-danger:hover {
     border-radius: .375rem;
     font-size: 13.45px;
     font-weight: 500;
-    line-height: 20px
+    line-height: 20px;
+    font-family: Tajawal, sans-serif !important; /* Tajawal font */
 }
 
 .btn-group-xs>.btn,
@@ -2450,7 +2452,7 @@ input[type=radio] .styled:checked+label:before {
     --tw-bg-opacity: 1;
     padding: 1.5rem;
     position: relative;
-    background-color: #E3D8D6; /* تغيير الخلفية من اللمسة النهائية */ 
+    background-color: #E3D8D6; /* تغيير الخلفية من اللمسة النهائية */
 }
 
 .panel-heading {
@@ -2848,7 +2850,10 @@ a.disabled {
 .bold,
 b,
 strong {
-    font-weight: 600
+    font-weight: 600;
+    font-family: Tajawal, sans-serif !important; /* Tajawal font */
+
+
 }
 
 .small,
@@ -8385,7 +8390,8 @@ small {
 }
 
 .tw-font-medium {
-    font-weight: 500
+    font-weight: 500;
+    font-family: Tajawal, sans-serif !important; /* Tajawal font */
 }
 
 .tw-font-bold {
@@ -8453,7 +8459,8 @@ small {
 
 .tw-text-neutral-500 {
     --tw-text-opacity: 1;
-    color: rgb(100 116 139/var(--tw-text-opacity))
+    font-family: Tajawal, sans-serif !important; /* Tajawal font */
+    color: rgb(51 65 85/var(--tw-text-opacity)) /* تغيير لون النص الافتراضي في القائمة من اللمسة النهائية */
 }
 
 .tw-text-neutral-600 {
@@ -13219,7 +13226,10 @@ a.bg-danger:hover {
 }
 
 .table>thead>tr>th {
-    vertical-align: middle
+    vertical-align: middle;
+    font-family: Tajawal, sans-serif !important; /* Tajawal font */
+    font-weight: 600;
+
 }
 
 .table>tbody>tr>td,

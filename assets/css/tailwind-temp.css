@@ -16153,7 +16153,8 @@ video {
 }
 
 .text-center {
-    text-align: center
+    text-align: center;
+    font-family: Tajawal, sans-serif !important; /* Tajawal font */
 }
 
 .text-right {
