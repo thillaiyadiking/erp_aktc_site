@@ -1,6 +1,20 @@
 <?php
-
 defined('BASEPATH') or exit('No direct script access allowed');
+
+
+// Path to your TTF file
+$fontPath = FCPATH . 'application/third_party/fonts/Tajawal/Tajawal-Black.ttf';
+
+// Add the font to TCPDF (returns internal font name)
+$fontname = TCPDF_FONTS::addTTFfont($fontPath, 'TrueTypeUnicode', '', 32);
+
+// Now set the font
+$pdf->SetFont($fontname, '', 14, '', false);
+// For numbers, use a font that supports them (like dejavusans)
+$pdf->setFontStretching(100);
+$pdf->setFontSpacing(0);
+$pdf->setCellHeightRatio(1.25);
+
 
 $dimensions = $pdf->getPageDimensions();
 
