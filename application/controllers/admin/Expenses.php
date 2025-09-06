@@ -31,6 +31,8 @@ class Expenses extends AdminController
         $data['title']         = _l('expenses');
 
         $this->load->view('admin/expenses/manage', $data);
+
+        
     }
 
     public function table($clientid = '')
@@ -45,6 +47,8 @@ class Expenses extends AdminController
             'clientid' => $clientid,
             'data'     => $data,
         ]);
+
+
     }
 
     public function expense($id = '')

@@ -1,20 +1,6 @@
 <?php
+
 defined('BASEPATH') or exit('No direct script access allowed');
-
-
-// Path to your TTF file
-$fontPath = FCPATH . 'application/third_party/fonts/Tajawal/Tajawal-Black.ttf';
-
-// Add the font to TCPDF (returns internal font name)
-$fontname = TCPDF_FONTS::addTTFfont($fontPath, 'TrueTypeUnicode', '', 32);
-
-// Now set the font
-$pdf->SetFont($fontname, '', 14, '', false);
-// For numbers, use a font that supports them (like dejavusans)
-$pdf->setFontStretching(100);
-$pdf->setFontSpacing(0);
-$pdf->setCellHeightRatio(1.25);
-
 
 $dimensions = $pdf->getPageDimensions();
 
@@ -22,7 +8,10 @@ $info_right_column = '';
 $info_left_column  = '';
 
 $info_right_column .= '<span style="font-weight:bold;font-size:27px;">' . _l('invoice_pdf_heading') . '</span><br />';
-$info_right_column .= '<b style="color:#4e4e4e;"># ' . $invoice_number . '</b>';
+$info_right_column .= '<b style="color:#4e4e4e;"># ' . $invoice_number . '</b><br/>';
+$invoiceDate = new DateTime(); // current date and time
+
+$info_right_column .= '<b style="color:#4e4e4e;">' . $invoiceDate->format('Y-m-d') . '</b>';
 
 if (get_option('show_status_on_pdf_ei') == 1) {
     $info_right_column .= '<br /><span style="color:rgb(' . invoice_status_color_pdf($status) . ');text-transform:uppercase;">' . format_invoice_status($status, '', false) . '</span>';
@@ -228,26 +217,26 @@ if (count($invoice->payments) > 0 && get_option('show_transactions_on_invoice_pd
     $pdf->writeHTML($tblhtml, true, false, false, false, '');
 }
 
-// if (found_invoice_mode($payment_modes, $invoice->id, true, true)) {
-//     $pdf->Ln(4);
-//     $pdf->SetFont($font_name, 'B', $font_size);
-//     $pdf->Cell(0, 0, _l('invoice_html_offline_payment') . ':', 0, 1, 'L', 0, '', 0);
-//     $pdf->SetFont($font_name, '', $font_size);
+if (found_invoice_mode($payment_modes, $invoice->id, true, true)) {
+    $pdf->Ln(4);
+    $pdf->SetFont($font_name, 'B', $font_size);
+    $pdf->Cell(0, 0, _l('invoice_html_offline_payment') . ':', 0, 1, 'L', 0, '', 0);
+    $pdf->SetFont($font_name, '', $font_size);
 
-//     foreach ($payment_modes as $mode) {
-//         if (is_numeric($mode['id'])) {
-//             if (!is_payment_mode_allowed_for_invoice($mode['id'], $invoice->id)) {
-//                 continue;
-//             }
-//         }
-//         if (isset($mode['show_on_pdf']) && $mode['show_on_pdf'] == 1) {
-//             $pdf->Ln(1);
-//             $pdf->Cell(0, 0, $mode['name'], 0, 1, 'L', 0, '', 0);
-//             $pdf->Ln(2);
-//             $pdf->writeHTMLCell('', '', '', '', $mode['description'], 0, 1, false, true, 'L', true);
-//         }
-//     }
-// }
+    foreach ($payment_modes as $mode) {
+        if (is_numeric($mode['id'])) {
+            if (!is_payment_mode_allowed_for_invoice($mode['id'], $invoice->id)) {
+                continue;
+            }
+        }
+        if (isset($mode['show_on_pdf']) && $mode['show_on_pdf'] == 1) {
+            $pdf->Ln(1);
+            $pdf->Cell(0, 0, $mode['name'], 0, 1, 'L', 0, '', 0);
+            $pdf->Ln(2);
+            $pdf->writeHTMLCell('', '', '', '', $mode['description'], 0, 1, false, true, 'L', true);
+        }
+    }
+}
 
 if (!empty($invoice->clientnote)) {
     $pdf->Ln(4);
@@ -266,8 +255,6 @@ if (!empty($invoice->terms)) {
     $pdf->Ln(2);
     $pdf->writeHTMLCell('', '', '', '', $invoice->terms, 0, 1, false, true, 'L', true);
 }
-
-
 
 $imagePath = FCPATH . 'uploads/zatca_phase_qr/phase-1.png';
 
