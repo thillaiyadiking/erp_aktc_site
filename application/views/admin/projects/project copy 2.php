@@ -256,100 +256,257 @@
                                 <?php } ?>
 
 
-                                <?php
-                                $locations = [];
-                                if (!empty($project->g_map_locations)) {
-                                    $locations = json_decode($project->g_map_locations, true);
-                                }
-                                ?>
+
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label class="control-label">Google Map Locations & Notes</label>
-                                        <div id="map-location-wrapper">
+                                        <!-- _____________________________________________________________________________________ -->
+                                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+                                        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
-                                            <?php
-                                            if (!empty($locations)) {
-                                                foreach ($locations as $i => $loc) {
-                                                    $address = isset($loc['address']) ? $loc['address'] : '';
-                                                    $note = isset($loc['note']) ? $loc['note'] : '';
-                                            ?>
-                                                    <div class="map-location-item row mb-2">
-                                                        <div class="col-md-5">
-                                                            <input type="text" name="g_map_locations[<?php echo $i; ?>][address]" class="form-control" placeholder="Google Map Address" value="<?php echo htmlspecialchars($address); ?>">
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <input type="text" name="g_map_locations[<?php echo $i; ?>][note]" class="form-control" placeholder="Note" value="<?php echo htmlspecialchars($note); ?>">
-                                                        </div>
-                                                        <div class="col-md-2 d-flex align-items-center">
-                                                            <button type="button" class="btn btn-danger btn-sm remove-location">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
+                                        <style>
+                                            .map_body {
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                            }
+
+                                            .map_container {
+                                                max-width: 1000px;
+                                                width: 100%;
+                                                background: white;
+                                                border-radius: 15px;
+                                                overflow: hidden;
+                                                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                                            }
+
+                                            .map_header {
+                                                text-align: center;
+                                                padding: 25px;
+                                                background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+                                                color: white;
+                                            }
+
+                                            .map_content {
+                                                display: flex;
+                                                flex-wrap: wrap;
+                                            }
+
+                                            .map_mapWrapper {
+                                                flex: 1;
+                                                min-width: 300px;
+                                                height: 400px;
+                                            }
+
+                                            #map_map {
+                                                width: 100%;
+                                                height: 100%;
+                                            }
+
+                                            .map_infoPanel {
+                                                flex: 1;
+                                                min-width: 300px;
+                                                padding: 25px;
+                                            }
+
+                                            .map_coordinates {
+                                                background-color: #f8f9fa;
+                                                padding: 20px;
+                                                border-radius: 10px;
+                                                margin-bottom: 20px;
+                                                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+                                            }
+
+                                            .map_coordinates p {
+                                                margin: 12px 0;
+                                                font-size: 1.1rem;
+                                            }
+
+                                            .map_coordinates span {
+                                                font-weight: bold;
+                                                color: #4285f4;
+                                            }
+
+                                            .map_button {
+                                                padding: 14px 20px;
+                                                background-color: #4285f4;
+                                                color: white;
+                                                border: none;
+                                                border-radius: 8px;
+                                                cursor: pointer;
+                                                font-size: 1rem;
+                                                margin-top: 10px;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                gap: 10px;
+                                                width: 100%;
+                                            }
+
+                                            .map_button:hover {
+                                                background-color: #3367d6;
+                                            }
+
+                                            #map_viewMap {
+                                                background-color: #34a853;
+                                            }
+
+                                            #map_viewMap:hover {
+                                                background-color: #2d8d47;
+                                            }
+
+                                            #map_shareLocation {
+                                                background-color: #fbbc05;
+                                                color: #333;
+                                            }
+
+                                            #map_shareLocation:hover {
+                                                background-color: #e0a800;
+                                                color: #fff;
+                                            }
+
+                                            .map_footer {
+                                                text-align: center;
+                                                margin-top: 30px;
+                                                padding: 20px;
+                                                color: #666;
+                                                border-top: 1px solid #eee;
+                                            }
+                                        </style>
+
+
+                                        <div class="map_body">
+                                            <div class="map_container">
+                                                <header class="map_header">
+                                                    <h1><i class="fas fa-map-marker-alt"></i> Accurate GPS Location Finder</h1>
+                                                    <p>Get your precise GPS location with live map</p>
+                                                </header>
+
+                                                <div class="map_content">
+                                                    <!-- Map -->
+                                                    <div class="map_mapWrapper">
+                                                        <div id="map_map"></div>
                                                     </div>
-                                                <?php
-                                                }
-                                            } else {
-                                                ?>
-                                                <!-- Empty first row if no data -->
-                                                <div class="map-location-item row mb-2">
-                                                    <div class="col-md-5">
-                                                        <input type="text" name="g_map_locations[0][address]" class="form-control" placeholder="Google Map Address">
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <input type="text" name="g_map_locations[0][note]" class="form-control" placeholder="Note">
-                                                    </div>
-                                                    <div class="col-md-2 d-flex align-items-center">
-                                                        <button type="button" class="btn btn-danger btn-sm remove-location">
-                                                            <i class="fa fa-trash"></i>
+
+                                                    <!-- Info Panel -->
+                                                    <div class="map_infoPanel">
+                                                        <div class="map_coordinates">
+                                                            <h2><i class="fas fa-location-dot"></i> Your GPS Coordinates</h2>
+                                                            <p>Latitude: <span id="map_latitude">--</span></p>
+                                                            <p>Longitude: <span id="map_longitude">--</span></p>
+                                                            <p>Accuracy: <span id="map_accuracy">--</span> meters</p>
+                                                        </div>
+
+                                                        <button type="button" id="map_getLocation" class="map_button">
+                                                            <i class="fas fa-satellite-dish"></i> Get Precise GPS Location
+                                                        </button>
+                                                        <button type="button" id="map_viewMap" class="map_button" disabled>
+                                                            <i class="fab fa-google"></i> View on Google Maps
+                                                        </button>
+                                                        <button type="button" id="map_shareLocation" class="map_button" disabled>
+                                                            <i class="fas fa-share-alt"></i> Share Location Link
                                                         </button>
                                                     </div>
                                                 </div>
-                                            <?php } ?>
 
+                                                <div class="map_footer">
+                                                    <p>Note: This tool uses your device's GPS when available. IP-based location is less accurate.</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Leaflet JS -->
+                                            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                                            <script>
+                                                let map, marker, userLatitude, userLongitude;
+
+                                                function initMap(lat, lng) {
+                                                    if (!map) {
+                                                        map = L.map('map_map').setView([lat, lng], 16);
+                                                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                                            attribution: '© OpenStreetMap contributors'
+                                                        }).addTo(map);
+
+                                                        marker = L.marker([lat, lng]).addTo(map)
+                                                            .bindPopup("📍 You are here")
+                                                            .openPopup();
+                                                    } else {
+                                                        map.setView([lat, lng], 16);
+                                                        marker.setLatLng([lat, lng]);
+                                                    }
+                                                }
+
+                                                function success(position) {
+                                                    userLatitude = position.coords.latitude;
+                                                    userLongitude = position.coords.longitude;
+                                                    const accuracy = position.coords.accuracy;
+
+                                                    document.getElementById('map_latitude').textContent = userLatitude.toFixed(6);
+                                                    document.getElementById('map_longitude').textContent = userLongitude.toFixed(6);
+                                                    document.getElementById('map_accuracy').textContent = accuracy.toFixed(1);
+
+                                                    initMap(userLatitude, userLongitude);
+                                                    document.getElementById('map_viewMap').disabled = false;
+                                                    document.getElementById('map_shareLocation').disabled = false;
+                                                }
+
+                                                function error(err) {
+                                                    alert("❌ Error getting location: " + err.message);
+                                                }
+
+                                                document.getElementById('map_getLocation').addEventListener('click', () => {
+                                                    if (navigator.geolocation) {
+                                                        navigator.geolocation.getCurrentPosition(success, error, {
+                                                            enableHighAccuracy: true,
+                                                            timeout: 10000,
+                                                            maximumAge: 0
+                                                        });
+                                                    } else {
+                                                        alert("Geolocation is not supported by this browser.");
+                                                    }
+                                                });
+
+                                                document.getElementById('map_viewMap').addEventListener('click', () => {
+                                                    if (userLatitude && userLongitude) {
+                                                        const url = `https://www.google.com/maps?q=${userLatitude},${userLongitude}&z=16`;
+                                                        window.open(url, '_blank');
+                                                    }
+                                                });
+
+                                                // ✅ Share button logic
+                                                document.getElementById('map_shareLocation').addEventListener('click', () => {
+                                                    if (userLatitude && userLongitude) {
+                                                        const url = `https://www.google.com/maps?q=${userLatitude},${userLongitude}&z=16`;
+
+                                                        if (navigator.share) {
+                                                            navigator.share({
+                                                                title: "My Location",
+                                                                text: "Here is my current location:",
+                                                                url: url
+                                                            }).catch(err => console.log("Share cancelled", err));
+                                                        } else {
+                                                            navigator.clipboard.writeText(url).then(() => {
+                                                                alert("📋 Location link copied to clipboard:\n" + url);
+                                                            }).catch(() => {
+                                                                alert("❌ Unable to copy the link. Here it is:\n" + url);
+                                                            });
+                                                        }
+                                                    }
+                                                });
+
+                                                // Auto-load location when page opens
+                                                if (navigator.geolocation) {
+                                                    navigator.geolocation.getCurrentPosition(success, error, {
+                                                        enableHighAccuracy: true,
+                                                        timeout: 10000,
+                                                        maximumAge: 0
+                                                    });
+                                                }
+                                            </script>
                                         </div>
-
-                                        <button type="button" id="add-location" class="btn btn-success btn-sm mt-2">
-                                            <i class="fa fa-plus"></i> Add More
-                                        </button>
+                                        <!-- _____________________________________________________________________________________ -->
                                     </div>
                                 </div>
 
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        const wrapper = document.getElementById("map-location-wrapper");
-                                        const addBtn = document.getElementById("add-location");
-                                        let index = wrapper.querySelectorAll(".map-location-item").length; // start after existing rows
-
-                                        addBtn.addEventListener("click", function() {
-                                            const item = document.createElement("div");
-                                            item.classList.add("map-location-item", "row", "mb-2");
-
-                                            item.innerHTML = `
-            <div class="col-md-5">
-                <input type="text" name="g_map_locations[${index}][address]" class="form-control" placeholder="Google Map Address">
-            </div>
-            <div class="col-md-5">
-                <input type="text" name="g_map_locations[${index}][note]" class="form-control" placeholder="Note">
-            </div>
-            <div class="col-md-2 d-flex align-items-center">
-                <button type="button" class="btn btn-danger btn-sm remove-location">
-                    <i class="fa fa-trash"></i>
-                </button>
-            </div>
-        `;
-
-                                            wrapper.appendChild(item);
-                                            index++;
-                                        });
-
-                                        wrapper.addEventListener("click", function(e) {
-                                            if (e.target.closest(".remove-location")) {
-                                                e.target.closest(".map-location-item").remove();
-                                            }
-                                        });
-                                    });
-                                </script>
 
 
 

@@ -3934,3 +3934,4 @@ $lang['Recipient_Employee']                                = 'Recipient Employee
 $lang['commercial_reg_num']                                = ' Commercial Registration Number';
 $lang['branch_info']                                       = 'Branch Information';
 $lang['is_supplier']                                       = 'Is supplier?';
+$lang['google_map_address']                                = 'Google Map Address';

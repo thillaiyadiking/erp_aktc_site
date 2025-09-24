@@ -31,6 +31,12 @@ class Staff extends AdminController
         $this->load->model('branches_model');
         if ($this->input->post()) {
             $data = $this->input->post();
+            // Convert map_locations array to JSON if it exists
+            if (isset($data['g_map_locations']) && is_array($data['g_map_locations'])) {
+                $data['g_map_locations'] = json_encode($data['g_map_locations'], JSON_UNESCAPED_UNICODE);
+            } else {
+                $data['g_map_locations'] = json_encode([]); // store as empty JSON array
+            }
             // Don't do XSS clean here.
             $data['email_signature'] = $this->input->post('email_signature', false);
             $data['email_signature'] = html_entity_decode($data['email_signature']);
@@ -98,11 +104,10 @@ class Staff extends AdminController
             $data['timesheets']  = $data['logged_time']['timesheets'];
             $assigned = [];
             $assigned_branches = $this->staff_model->get_assigned_branches($id);
-            foreach($assigned_branches as $br){
-            array_push($assigned,$br->branch_id);
+            foreach ($assigned_branches as $br) {
+                array_push($assigned, $br->branch_id);
             }
             $data['assigned_branches'] = $assigned;
-            
         }
         $this->load->model('currencies_model');
         $data['base_currency'] = $this->currencies_model->get_base_currency();
@@ -428,7 +433,7 @@ class Staff extends AdminController
         if ($this->input->post()) {
             $data = $this->input->post();
             $this->load->model('authentication_model');
-            $is_success = $this->authentication_model->is_google_two_factor_code_valid($data['code'],$data['secret']);
+            $is_success = $this->authentication_model->is_google_two_factor_code_valid($data['code'], $data['secret']);
             $result = [];
 
             header('Content-Type: application/json');
@@ -454,7 +459,7 @@ class Staff extends AdminController
 
         $post_data = $this->input->post();
         if (is_numeric($post_data['task_id'])) {
-            update_staff_meta(get_staff_user_id(), 'task-hide-completed-items-'. $post_data['task_id'], $post_data['hideCompleted']);
+            update_staff_meta(get_staff_user_id(), 'task-hide-completed-items-' . $post_data['task_id'], $post_data['hideCompleted']);
         }
     }
 }

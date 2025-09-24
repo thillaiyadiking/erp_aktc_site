@@ -77,6 +77,13 @@ class Projects extends AdminController
 
         if ($this->input->post()) {
             $data                = $this->input->post();
+            // Convert map_locations array to JSON if it exists
+            if (isset($data['g_map_locations']) && is_array($data['g_map_locations'])) {
+                $data['g_map_locations'] = json_encode($data['g_map_locations'], JSON_UNESCAPED_UNICODE);
+            } else {
+                $data['g_map_locations'] = json_encode([]); // store as empty JSON array
+            }
+
             $data['description'] = html_purify($this->input->post('description', false));
             if ($id == '') {
                 if (!staff_can('create', 'projects')) {
@@ -381,7 +388,7 @@ class Projects extends AdminController
             if (!staff_can('view', 'projects')) {
                 $other_projects_where .= ' AND ' . db_prefix() . 'projects.id IN (SELECT project_id FROM ' . db_prefix() . 'project_members WHERE staff_id=' . get_staff_user_id() . ')';
             }
-            
+
 
             $data['other_projects'] = $this->projects_model->get('', $other_projects_where);
             $data['title']          = $data['project']->name;
@@ -1137,7 +1144,8 @@ class Projects extends AdminController
                     'name',
                 ], 'task_milestone', $selected_milestone),
                 'assignees' => render_select('assignees[]', $this->projects_model->get_project_members($id, true), [
-                    'staff_id', ['firstname', 'lastname'],
+                    'staff_id',
+                    ['firstname', 'lastname'],
                 ], 'task_single_assignees', $assigned, ['multiple' => true], [], '', '', false),
             ]);
         }

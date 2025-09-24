@@ -83,6 +83,13 @@ class Clients extends AdminController
         if ($this->input->post() && !$this->input->is_ajax_request()) {
 
             $data = $this->input->post();
+            // Convert map_locations array to JSON if it exists
+            if (isset($data['g_map_locations']) && is_array($data['g_map_locations'])) {
+                $data['g_map_locations'] = json_encode($data['g_map_locations'], JSON_UNESCAPED_UNICODE);
+            } else {
+                $data['g_map_locations'] = json_encode([]); // store as empty JSON array
+            }
+
 
             $bankDetails = [];
 

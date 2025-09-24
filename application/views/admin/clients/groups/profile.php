@@ -122,10 +122,10 @@
                         <?php $value = (isset($client) ? $client->phonenumber : ''); ?>
                         <?php echo render_input('phonenumber', 'client_phonenumber', $value); ?>
 
+
                         <?php
                         $bankDetails = json_decode($client->bank_details ?? '[]', true);
 
-                        // If empty, add one blank entry to show at least one row
                         if (empty($bankDetails)) {
                             $bankDetails[] = ['iban' => '', 'account' => '', 'bank_name' => ''];
                         }
@@ -139,30 +139,33 @@
                             "Saudi National Bank",
                             "Aljazira Bank",
                         ];
-
                         ?>
-                        <div class="form-group" app-field-wrapper="bank_fields">
-                            <label for="bank_fields" class="control-label">             </label>
 
+                        <div class="form-group" app-field-wrapper="bank_fields">
+                            <label for="bank_fields" class="control-label"> </label>
 
                             <div id="bank-fields">
                                 <?php foreach ($bankDetails as $detail): ?>
                                     <div class="bank-group row mb-2">
                                         <div class="col-md-6">
                                             <input type="text" class="form-control iban-input" name="iban[]" placeholder="IBAN"
-                                                value="<?= htmlspecialchars($detail['iban']) ?>">
+                                                value="<?= htmlspecialchars($detail['iban']) ?>" required>
                                         </div>
                                         <div class="col-md-3">
                                             <input type="text" class="form-control" name="account[]" placeholder="Account"
-                                                value="<?= htmlspecialchars($detail['account']) ?>">
+                                                value="<?= htmlspecialchars($detail['account']) ?>" required>
                                         </div>
-                                        <div class="col-md-2">
-                                            <select class="form-control" name="bank_name[]">
-                                                <option value="">Select Bank</option>
+                                        <div class="col-md-3">
+                                            <!-- Text box for custom bank -->
+                                            <input type="text" class="form-control mb-1 bank-custom-input"
+                                                name="bank_name[]" placeholder="Enter Bank Name (optional)"
+                                                value="<?= htmlspecialchars($detail['bank_name']) ?>">
+
+                                            <!-- Dropdown for predefined banks -->
+                                            <select class="form-control bank-select" onchange="syncBankName(this)">
+                                                <option value="">Or Select Bank</option>
                                                 <?php foreach ($banks as $bank): ?>
-                                                    <option value="<?= $bank ?>" <?= ($detail['bank_name'] == $bank) ? 'selected' : '' ?>>
-                                                        <?= $bank ?>
-                                                    </option>
+                                                    <option value="<?= $bank ?>"><?= $bank ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -175,16 +178,118 @@
                                 <?php endforeach; ?>
                             </div>
 
-
                             <a href="#" class="btn btn-success" onclick="addBankField(); return false;">
                                 <i class="fa fa-plus"></i> Add More
                             </a>
-
                         </div>
 
+                        <?php
+                        $locations = [];
+                        if (!empty($client->g_map_locations)) {
+                            $locations = json_decode($client->g_map_locations, true);
+                        }
+                        ?>
+
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <label class="control-label">Google Map Locations & Notes</label>
+
+                                <?php if (!empty($client->g_map_locations)) { ?>
+                                    <?php
+                                    $locations = json_decode($client->g_map_locations, true);
+                                    if (is_array($locations)) {
+                                    ?>
+                                        <div class="row">
+                                            <?php
+                                            foreach ($locations as $index => $loc) {
+                                                $mapUrl = isset($loc['address']) ? $loc['address'] : '';
+                                                $note   = isset($loc['note']) ? $loc['note'] : '';
+                                                if (!empty($mapUrl)) {
+                                            ?>
+                                                    <div class="col-md-6 mb-4">
+                                                        <div class="card h-100 location-card p-3" style="border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);background-color: #f9f9f9;">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">
+                                                                    <?php echo _l('Address'); ?> <?php echo $index + 1; ?>
+                                                                </h5>
+
+                                                                <?php if (!empty($note)) { ?>
+                                                                    <p class="card-text">
+                                                                        <strong>Note:</strong> <?php echo htmlspecialchars($note); ?>
+                                                                    </p>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <div class="card-footer bg-transparent">
+                                                                <a href="<?php echo htmlspecialchars($mapUrl); ?>"
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    class="btn btn-outline-primary btn-sm d-flex align-items-center justify-content-center w-100"
+                                                                    title="View on Google Maps">
+                                                                    <i class="fa-solid fa-diamond-turn-right me-2"></i>
+                                                                    View on Maps
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            <?php
+                                                }
+                                            }
+                                            ?>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+                                <?php } ?>
 
 
+                                <div id="map-location-wrapper">
 
+                                    <?php
+                                    if (!empty($locations)) {
+                                        foreach ($locations as $i => $loc) {
+                                            $address = isset($loc['address']) ? $loc['address'] : '';
+                                            $note = isset($loc['note']) ? $loc['note'] : '';
+                                    ?>
+                                            <div class="map-location-item row mb-2">
+                                                <div class="col-md-5">
+                                                    <input type="text" name="g_map_locations[<?php echo $i; ?>][address]" class="form-control" placeholder="Google Map Address" value="<?php echo htmlspecialchars($address); ?>">
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <input type="text" name="g_map_locations[<?php echo $i; ?>][note]" class="form-control" placeholder="Note" value="<?php echo htmlspecialchars($note); ?>">
+                                                </div>
+                                                <div class="col-md-2 d-flex align-items-center">
+                                                    <button type="button" class="btn btn-danger btn-sm remove-location">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                    } else {
+                                        ?>
+                                        <!-- Empty first row if no data -->
+                                        <div class="map-location-item row mb-2">
+                                            <div class="col-md-5">
+                                                <input type="text" name="g_map_locations[0][address]" class="form-control" placeholder="Google Map Address">
+                                            </div>
+                                            <div class="col-md-5">
+                                                <input type="text" name="g_map_locations[0][note]" class="form-control" placeholder="Note">
+                                            </div>
+                                            <div class="col-md-2 d-flex align-items-center">
+                                                <button type="button" class="btn btn-danger btn-sm remove-location">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+
+                                </div>
+
+                                <button type="button" id="add-location" class="btn btn-success btn-sm mt-2">
+                                    <i class="fa fa-plus"></i> Add More
+                                </button>
+                            </div>
+                        </div>
 
                         <?php hooks()->do_action('after_customer_profile_company_phone', $client ?? null); ?>
                         <?php if ((isset($client) && empty($client->website)) || !isset($client)) {
@@ -458,6 +563,10 @@
 <?php $this->load->view('admin/clients/client_group'); ?>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        attachIbanPrefix();
+    });
+
     function addBankField() {
         const wrapper = document.getElementById('bank-fields');
         const div = document.createElement('div');
@@ -469,15 +578,18 @@
             <div class="col-md-3">
                 <input type="text" class="form-control" name="account[]" placeholder="Account" required>
             </div>
-            <div class="col-md-2">
-                <select class="form-control" name="bank_name[]" required>
-                    <option value="">Select Bank</option>
+            <div class="col-md-3">
+                <input type="text" class="form-control mb-1 bank-custom-input"
+                       name="bank_name[]" placeholder="Enter Bank Name (optional)">
+                <select class="form-control bank-select" onchange="syncBankName(this)">
+                    <option value="">Or Select Bank</option>
                     <option value="Al Rajhi Bank">Al Rajhi Bank</option>
                     <option value="National Commercial Bank">National Commercial Bank</option>
                     <option value="Riyad Bank">Riyad Bank</option>
                     <option value="SABB">SABB</option>
                     <option value="Arab National Bank">Arab National Bank</option>
-                    <!-- Add more banks -->
+                    <option value="Saudi National Bank">Saudi National Bank</option>
+                    <option value="Aljazira Bank">Aljazira Bank</option>
                 </select>
             </div>
             <div class="col-md-1">
@@ -487,7 +599,7 @@
             </div>
         `;
         wrapper.appendChild(div);
-        attachIbanPrefix(); // Ensure new IBAN input starts with SA
+        attachIbanPrefix();
     }
 
     function removeField(button) {
@@ -508,5 +620,47 @@
         });
     }
 
+    function syncBankName(select) {
+        const customInput = select.parentElement.querySelector('.bank-custom-input');
+        if (select.value) {
+            customInput.value = select.value;
+        }
+    }
+
+    
     // document.addEventListener('DOMContentLoaded', attachIbanPrefix);
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const wrapper = document.getElementById("map-location-wrapper");
+        const addBtn = document.getElementById("add-location");
+        let index = wrapper.querySelectorAll(".map-location-item").length; // start after existing rows
+
+        addBtn.addEventListener("click", function() {
+            const item = document.createElement("div");
+            item.classList.add("map-location-item", "row", "mb-2");
+
+            item.innerHTML = `
+            <div class="col-md-5">
+                <input type="text" name="g_map_locations[${index}][address]" class="form-control" placeholder="Google Map Address">
+            </div>
+            <div class="col-md-5">
+                <input type="text" name="g_map_locations[${index}][note]" class="form-control" placeholder="Note">
+            </div>
+            <div class="col-md-2 d-flex align-items-center">
+                <button type="button" class="btn btn-danger btn-sm remove-location">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        `;
+
+            wrapper.appendChild(item);
+            index++;
+        });
+
+        wrapper.addEventListener("click", function(e) {
+            if (e.target.closest(".remove-location")) {
+                e.target.closest(".map-location-item").remove();
+            }
+        });
+    });
 </script>
