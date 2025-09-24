@@ -1248,6 +1248,7 @@ $lang['payment_transaction_id'] = 'Transaction ID';
 
 # Expenses
 $lang['acs_expense_categories']                       = 'Expenses Categories';
+$lang['acs_banks']                                    = 'Banks';
 $lang['expense_category']                             = 'Expense Category';
 $lang['expense_category_lowercase']                   = 'expense category';
 $lang['new_expense']                                  = 'Record Expense';

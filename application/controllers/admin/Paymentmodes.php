@@ -87,4 +87,9 @@ class Paymentmodes extends AdminController
             $this->payment_modes_model->change_payment_mode_show_to_client_status($id, $status);
         }
     }
+
+
+    public function banks() {
+        echo "string";
+    }
 }
