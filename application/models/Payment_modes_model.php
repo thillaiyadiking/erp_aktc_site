@@ -180,8 +180,10 @@ class Payment_modes_model extends App_Model
     public function delete($id)
     {
         // Check if the payment mode is using in the invoiec payment records table.
-        if (is_reference_in_table('paymentmode', db_prefix() . 'invoicepaymentrecords', $id)
-            || is_reference_in_table('paymentmode', db_prefix() . 'expenses', $id)) {
+        if (
+            is_reference_in_table('paymentmode', db_prefix() . 'invoicepaymentrecords', $id)
+            || is_reference_in_table('paymentmode', db_prefix() . 'expenses', $id)
+        ) {
             return [
                 'referenced' => true,
             ];
@@ -215,11 +217,11 @@ class Payment_modes_model extends App_Model
             hooks()->do_action('before_get_payment_gateways');
 
             /**
-              * Moved here in 2.3.4
-              * When remove $this->payment_gateways, change filter parameter below $this->payment_gateways to empty array ([])
-              * @since 2.3.2
-              * @var array
-            */
+             * Moved here in 2.3.4
+             * When remove $this->payment_gateways, change filter parameter below $this->payment_gateways to empty array ([])
+             * @since 2.3.2
+             * @var array
+             */
             $this->gateways = hooks()->apply_filters('app_payment_gateways', $this->payment_gateways);
         }
 
@@ -327,8 +329,78 @@ class Payment_modes_model extends App_Model
             }
         }
 
-        if (hooks()->has_filter('app_payment_gateways', [ $class, 'initMode']) === false) {
+        if (hooks()->has_filter('app_payment_gateways', [$class, 'initMode']) === false) {
             hooks()->add_filter('app_payment_gateways', [$class, 'initMode']);
         }
     }
+
+
+    // BANK
+    public function bank_add($data)
+    {
+        if (isset($data['id'])) {
+            unset($data['id']);
+        }
+
+        $this->db->insert(db_prefix() . 'banks', [
+            'name'                => $data['name'],
+            'is_active' => $data['active'] ==  'on' ? 1 : 0,
+        ]);
+
+        $insert_id = $this->db->insert_id();
+
+        if ($insert_id) {
+            log_activity('New Bank  Added [ID: ' . $insert_id . ', Name:' . $data['name'] . ']');
+
+            hooks()->do_action('after_bank_added', [
+                'id'   => $insert_id,
+                'data' => $data,
+            ]);
+
+            return true;
+        }
+
+        return false;
+    }
+    public function bank_edit($data)
+    {
+        $id      = $data['bank_id'];
+        $updated = false;
+        unset($data['bank_id']);
+        $data['active'] = $data['active'] ==  'on' ? 1 : 0;
+        $this->db->where('id', $id);
+        $this->db->update('banks', [
+            'name'                => $data['name'],
+            'is_active'              => $data['active'],
+        ]);
+
+        if ($this->db->affected_rows() > 0) {
+            $updated = true;
+        }
+
+        hooks()->do_action('after_update_bank', [
+            'id'      => $id,
+            'data'    => $data,
+            'updated' => &$updated,
+        ]);
+
+        if ($updated) {
+            log_activity('Bank Updated [ID: ' . $id . ', Name:' . $data['name'] . ']');
+        }
+
+        return $updated;
+    }
+    public function bank_delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('banks');
+        if ($this->db->affected_rows() > 0) {
+            log_activity('Bank Deleted [' . $id . ']');
+
+            return true;
+        }
+
+        return false;
+    }
+    // BANK
 }
