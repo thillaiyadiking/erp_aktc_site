@@ -79,10 +79,13 @@ class Clients extends AdminController
                 access_denied('customers');
             }
         }
+        $this->load->model('payment_modes_model');
 
         if ($this->input->post() && !$this->input->is_ajax_request()) {
 
             $data = $this->input->post();
+
+
             // Convert map_locations array to JSON if it exists
             if (isset($data['g_map_locations']) && is_array($data['g_map_locations'])) {
                 $data['g_map_locations'] = json_encode($data['g_map_locations'], JSON_UNESCAPED_UNICODE);
@@ -95,10 +98,10 @@ class Clients extends AdminController
 
             $ibanArr     = $data['iban'] ?? [];
             $accountArr  = $data['account'] ?? [];
-            $bankNameArr = $data['bank_name'] ?? [];
+            $bankIdArr = $data['bank_id'] ?? [];
 
             // Remove from $data to clean up before DB insert
-            unset($data['iban'], $data['account'], $data['bank_name']);
+            unset($data['iban'], $data['account'], $data['bank_id']);
 
             for ($i = 0; $i < count($ibanArr); $i++) {
                 // if (empty($ibanArr[$i]) && empty($accountArr[$i]) && empty($bankNameArr[$i])) {
@@ -108,7 +111,7 @@ class Clients extends AdminController
                 $bankDetails[] = [
                     'iban'      => $ibanArr[$i] ?? '',
                     'account'   => $accountArr[$i] ?? '',
-                    'bank_name' => $bankNameArr[$i] ?? '',
+                    'bank_id' => $bankIdArr[$i] ?? '',
                 ];
             }
 
@@ -266,6 +269,9 @@ class Clients extends AdminController
         $data['currencies'] = $this->currencies_model->get();
         $bid = get_current_branch();
         $data['branch_det'] = $this->Branches_model->get($bid);
+
+        $data['all_banks'] = $this->payment_modes_model->get_all_banks('', [], true);
+
         if ($id != '') {
             $customer_currency = $data['client']->default_currency;
 
@@ -303,8 +309,6 @@ class Clients extends AdminController
         $data['bodyclass'] = 'customer-profile dynamic-create-groups';
         $data['title']     = $title;
         $data['edit_data_id']     = $id;
-
-
 
 
         $this->load->view('admin/clients/client', $data);

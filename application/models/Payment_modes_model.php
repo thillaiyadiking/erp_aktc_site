@@ -402,5 +402,25 @@ class Payment_modes_model extends App_Model
 
         return false;
     }
+
+
+
+    public function get_all_banks($id = '', $where = [], $include_inactive = false, $force = false)
+    {
+        $this->db->where($where);
+        if (is_numeric($id)) {
+            $this->db->where('id', $id);
+            return $this->db->get(db_prefix() . 'banks')->row();
+        }
+
+        if ($include_inactive !== true) {
+            $this->db->where('is_active', 1);
+        }
+        //$this->db->where('branch_id', get_current_branch());
+        $modes = $this->db->get(db_prefix() . 'banks')->result_array();
+
+        return $modes;
+    }
+
     // BANK
 }

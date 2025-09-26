@@ -95,9 +95,16 @@ class Paymentmodes extends AdminController
         if ($this->input->is_ajax_request()) {
             $this->app->get_table_data('banks');
         }
-    
+
         $data['title'] = _l('banks');
         $this->load->view('admin/paymentmodes/banks', $data);
+    }
+
+    /* Add or update payment mode / ajax */
+    public function all_banks()
+    {
+        $success = $this->payment_modes_model->get_all_banks('', [], true);
+        echo json_encode($success);
     }
 
     /* Add or update payment mode / ajax */

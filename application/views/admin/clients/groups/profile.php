@@ -123,22 +123,19 @@
                         <?php echo render_input('phonenumber', 'client_phonenumber', $value); ?>
 
 
+
+                        <div for="" class="control-label">ِAccount Details</div>
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#bank_modal">
+                            <i class="fa-regular fa-plus tw-mr-1"></i>
+                            <?php echo _l('new_bank'); ?>
+                        </a>
+
                         <?php
                         $bankDetails = json_decode($client->bank_details ?? '[]', true);
 
                         if (empty($bankDetails)) {
-                            $bankDetails[] = ['iban' => '', 'account' => '', 'bank_name' => ''];
+                            $bankDetails[] = ['iban' => '', 'account' => '', 'bank_id' => ''];
                         }
-
-                        $banks = [
-                            "Al Rajhi Bank",
-                            "National Commercial Bank",
-                            "Riyad Bank",
-                            "SABB",
-                            "Arab National Bank",
-                            "Saudi National Bank",
-                            "Aljazira Bank",
-                        ];
                         ?>
 
                         <div class="form-group" app-field-wrapper="bank_fields">
@@ -147,26 +144,25 @@
                             <div id="bank-fields">
                                 <?php foreach ($bankDetails as $detail): ?>
                                     <div class="bank-group row mb-2">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <input type="text" class="form-control iban-input" name="iban[]" placeholder="IBAN"
                                                 value="<?= htmlspecialchars($detail['iban']) ?>" required>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <input type="text" class="form-control" name="account[]" placeholder="Account"
                                                 value="<?= htmlspecialchars($detail['account']) ?>" required>
                                         </div>
                                         <div class="col-md-3">
-                                            <!-- Text box for custom bank -->
-                                            <input type="text" class="form-control mb-1 bank-custom-input"
-                                                name="bank_name[]" placeholder="Enter Bank Name (optional)"
-                                                value="<?= htmlspecialchars($detail['bank_name']) ?>">
-
                                             <!-- Dropdown for predefined banks -->
-                                            <select class="form-control bank-select" onchange="syncBankName(this)">
+                                            <select class="form-control bank-select" name="bank_id[]" onchange="syncBankName(this)" data-selected="<?= htmlspecialchars($detail['bank_id']) ?>">
                                                 <option value="">Or Select Bank</option>
-                                                <?php foreach ($banks as $bank): ?>
-                                                    <option value="<?= $bank ?>"><?= $bank ?></option>
-                                                <?php endforeach; ?>
+                                                <?php if (isset($all_banks) && !empty($all_banks)): ?>
+                                                    <?php foreach ($all_banks as $bank): ?>
+                                                        <option value="<?= $bank['id'] ?>" <?= ($bank['id'] == $detail['bank_id']) ? 'selected' : '' ?>>
+                                                            <?= htmlspecialchars($bank['name']) ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
                                             </select>
                                         </div>
                                         <div class="col-md-1">
@@ -177,6 +173,7 @@
                                     </div>
                                 <?php endforeach; ?>
                             </div>
+
 
                             <a href="#" class="btn btn-success" onclick="addBankField(); return false;">
                                 <i class="fa fa-plus"></i> Add More
@@ -527,6 +524,8 @@
         </div>
     </div>
     <?php echo form_close(); ?>
+
+
 </div>
 <?php if (isset($client)) { ?>
     <?php if (has_permission('customers', '', 'create') || has_permission('customers', '', 'edit')) { ?>
@@ -563,6 +562,7 @@
 <?php $this->load->view('admin/clients/client_group'); ?>
 
 <script>
+    // ++++++++++++++++++              Bank Details JS          ++++++++++++++++++++++++++++++++++++++++++++++
     document.addEventListener('DOMContentLoaded', function() {
         attachIbanPrefix();
     });
@@ -572,24 +572,16 @@
         const div = document.createElement('div');
         div.className = 'bank-group row mb-2';
         div.innerHTML = `
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <input type="text" class="form-control iban-input" name="iban[]" placeholder="IBAN" required>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <input type="text" class="form-control" name="account[]" placeholder="Account" required>
             </div>
             <div class="col-md-3">
-                <input type="text" class="form-control mb-1 bank-custom-input"
-                       name="bank_name[]" placeholder="Enter Bank Name (optional)">
-                <select class="form-control bank-select" onchange="syncBankName(this)">
+                
+                <select class="form-control bank-select" name="bank_id[]">
                     <option value="">Or Select Bank</option>
-                    <option value="Al Rajhi Bank">Al Rajhi Bank</option>
-                    <option value="National Commercial Bank">National Commercial Bank</option>
-                    <option value="Riyad Bank">Riyad Bank</option>
-                    <option value="SABB">SABB</option>
-                    <option value="Arab National Bank">Arab National Bank</option>
-                    <option value="Saudi National Bank">Saudi National Bank</option>
-                    <option value="Aljazira Bank">Aljazira Bank</option>
                 </select>
             </div>
             <div class="col-md-1">
@@ -599,6 +591,7 @@
             </div>
         `;
         wrapper.appendChild(div);
+        get_all_banks();
         attachIbanPrefix();
     }
 
@@ -621,13 +614,50 @@
     }
 
     function syncBankName(select) {
-        const customInput = select.parentElement.querySelector('.bank-custom-input');
-        if (select.value) {
-            customInput.value = select.value;
-        }
+        // const customInput = select.parentElement.querySelector('.bank-custom-input');
+        // if (select.value) {
+        //     customInput.value = select.value;
+        // }
     }
 
-    
+    // Fetch all banks via GET request and update the bank dropdowns, preserving selected value
+    function get_all_banks() {
+        $.get('<?= base_url() ?>admin/paymentmodes/all_banks', function(response) {
+            let banks = JSON.parse(response);
+
+            document.querySelectorAll('.bank-select').forEach(function(select) {
+                // Get the selected bank_id from data attribute
+                let selectedBankId = select.value || select.getAttribute('data-selected') || '';
+
+                // Remove old options except the first one
+                select.options.length = 1;
+
+                // Add bank options
+                banks.forEach(function(bank) {
+                    let option = document.createElement('option');
+                    option.value = bank.id;
+                    option.text = bank.name;
+
+                    // Set as selected if it matches the bank_id from database
+                    if (bank.id == selectedBankId) {
+                        option.selected = true;
+                    }
+
+                    select.appendChild(option);
+                });
+            });
+        });
+    }
+
+    // Call on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        get_all_banks();
+    });
+
+
+
+    // ++++++++++++++++++              Bank Details JS          ++++++++++++++++++++++++++++++++++++++++++++++
+
     // document.addEventListener('DOMContentLoaded', attachIbanPrefix);
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -664,3 +694,5 @@
         });
     });
 </script>
+
+<?php $this->load->view('admin/paymentmodes/bank_modal'); ?>

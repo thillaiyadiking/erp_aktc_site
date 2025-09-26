@@ -100,6 +100,10 @@
 
             if (response.success == true) {
                 $('.table-payment-modes').DataTable().ajax.reload();
+                if (typeof get_all_banks === 'function') {
+                    get_all_banks();
+                }
+
                 alert_float('success', response.message);
             }
             $('#bank_modal').modal('hide');
