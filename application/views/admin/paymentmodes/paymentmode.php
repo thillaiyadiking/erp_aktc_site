@@ -51,23 +51,23 @@
 </div>
 
 <script>
-    window.addEventListener('load',function(){
+    window.addEventListener('load', function() {
 
         appValidateForm($('#payment_modes_form'), {
             name: 'required'
         }, manage_payment_modes);
 
-        $('.pm-available-to input').on('change',function(){
+        $('.pm-available-to input').on('change', function() {
             var checked = $(this).prop('checked');
             var name = $(this).attr('name');
-            if(checked == 1 && name == 'invoices_only'){
-                $('input[name="expenses_only"]').prop('disabled',true);
-            } else if(checked == 0 && name == 'invoices_only'){
-                $('input[name="expenses_only"]').prop('disabled',false);
-            } else if(checked == 1 && name=='expenses_only'){
-                $('input[name="invoices_only"]').prop('disabled',true);
-            } else if(checked == 0 && name == 'expenses_only'){
-                $('input[name="invoices_only"]').prop('disabled',false);
+            if (checked == 1 && name == 'invoices_only') {
+                $('input[name="expenses_only"]').prop('disabled', true);
+            } else if (checked == 0 && name == 'invoices_only') {
+                $('input[name="expenses_only"]').prop('disabled', false);
+            } else if (checked == 1 && name == 'expenses_only') {
+                $('input[name="invoices_only"]').prop('disabled', true);
+            } else if (checked == 0 && name == 'expenses_only') {
+                $('input[name="invoices_only"]').prop('disabled', false);
             }
         });
 
@@ -81,8 +81,8 @@
             $('#payment_mode_modal input[name="name"]').val('');
             $('#payment_mode_modal input[name="paymentmodeid"]').val('');
             $('#payment_mode_modal input[name="active"]').prop('checked', true);
-            $('#payment_mode_modal input[name="expenses_only"]').prop('checked', false).prop('disabled',false);
-            $('#payment_mode_modal input[name="invoices_only"]').prop('checked', false).prop('disabled',false);
+            $('#payment_mode_modal input[name="expenses_only"]').prop('checked', false).prop('disabled', false);
+            $('#payment_mode_modal input[name="invoices_only"]').prop('checked', false).prop('disabled', false);
             $('#payment_mode_modal input[name="show_on_pdf"]').prop('checked', false);
             $('#payment_mode_modal input[name="selected_by_default"]').prop('checked', false);
             $('#payment_mode_modal textarea[name="description"]').val('');
@@ -106,6 +106,7 @@
             }
         });
     });
+
     function manage_payment_modes(form) {
         var data = $(form).serialize();
         var url = form.action;

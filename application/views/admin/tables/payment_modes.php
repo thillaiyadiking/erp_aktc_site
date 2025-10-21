@@ -7,7 +7,7 @@ $aColumns = [
     'name',
     'description',
     'active',
-    ];
+];
 $sIndexColumn = 'id';
 $sTable       = db_prefix() . 'payment_modes';
 
@@ -17,7 +17,7 @@ $result = data_tables_init($aColumns, $sIndexColumn, $sTable, [], $swhere, [
     'invoices_only',
     'show_on_pdf',
     'selected_by_default',
-    ]);
+]);
 $output  = $result['output'];
 $rResult = $result['rResult'];
 
@@ -53,7 +53,7 @@ foreach ($rResult as $aRow) {
         'data-invoices-only'    => $aRow['invoices_only'],
         'data-show-on-pdf'      => $aRow['show_on_pdf'],
         'data-default-selected' => $aRow['selected_by_default'],
-        ]) . '>
+    ]) . '>
         <i class="fa-regular fa-pen-to-square fa-lg"></i>
     </a>';
 

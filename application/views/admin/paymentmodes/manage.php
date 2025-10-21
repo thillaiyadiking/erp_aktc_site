@@ -19,7 +19,7 @@
                             _l('payment_modes_dt_description'),
                             _l('payment_modes_dt_active'),
                             _l('options'),
-                            ], 'payment-modes'); ?>
+                        ], 'payment-modes'); ?>
                     </div>
                 </div>
             </div>
@@ -29,9 +29,9 @@
 <?php $this->load->view('admin/paymentmodes/paymentmode'); ?>
 <?php init_tail(); ?>
 <script>
-$(function() {
-    initDataTable('.table-payment-modes', window.location.href, [4], [4], 'undefined', [1, 'asc']);
-});
+    $(function() {
+        initDataTable('.table-payment-modes', window.location.href, [4], [4], 'undefined', [1, 'asc']);
+    });
 </script>
 </body>
 

@@ -33,14 +33,13 @@ function init_head($aside = true)
 {
     $CI = &get_instance();
     $CI->load->view('admin/includes/head');
-    
+
     //$CI->load->view('admin/includes/setup_menu');
     if ($aside == true) {
         $CI->load->view('admin/includes/aside');
         $bid = get_current_branch();
-        $CI->load->view('admin/includes/header', ['startedTimers' => $CI->misc_model->get_staff_started_timers(),'branch_det' => $CI->Branches_model->get($bid)]);
-    }
-    else{
+        $CI->load->view('admin/includes/header', ['startedTimers' => $CI->misc_model->get_staff_started_timers(), 'branch_det' => $CI->Branches_model->get($bid)]);
+    } else {
         $CI->load->view('admin/includes/superadmin_aside');
         $CI->load->view('admin/includes/header', ['startedTimers' => $CI->misc_model->get_staff_started_timers()]);
     }
@@ -121,11 +120,11 @@ function staff_can($capability, $feature = null, $staff_id = '')
         return true;
     }
 
-    if(is_branchadmin($staff_id)){
+    if (is_branchadmin($staff_id)) {
         return true;
     }
 
-    
+
 
 
 
@@ -160,8 +159,10 @@ function staff_can($capability, $feature = null, $staff_id = '')
     }
 
     foreach ($permissions as $permission) {
-        if ($feature == $permission['feature']
-            && $capability == $permission['capability']) {
+        if (
+            $feature == $permission['feature']
+            && $capability == $permission['capability']
+        ) {
             return hooks()->apply_filters('staff_can', true, $capability, $feature, $staff_id);
         }
     }
@@ -212,7 +213,7 @@ function has_permission($permission, $staffid = '', $can = '')
  */
 function load_admin_language($staff_id = '')
 {
-    $CI = & get_instance();
+    $CI = &get_instance();
 
     $CI->lang->is_loaded = [];
     $CI->lang->language  = [];
@@ -220,8 +221,10 @@ function load_admin_language($staff_id = '')
     $language = get_option('active_language');
     if ((is_staff_logged_in() || $staff_id != '') && !is_language_disabled()) {
         $staff_language = get_staff_default_language($staff_id);
-        if (!empty($staff_language)
-            && file_exists(APPPATH . 'language/' . $staff_language)) {
+        if (
+            !empty($staff_language)
+            && file_exists(APPPATH . 'language/' . $staff_language)
+        ) {
             $language = $staff_language;
         }
     }
@@ -259,7 +262,7 @@ function is_admin($staffid = '')
     /**
      * Checking for current user?
      */
-    
+
     if (!is_numeric($staffid)) {
         if (isset($GLOBALS['current_user'])) {
             return $GLOBALS['current_user']->admin === '1';
@@ -268,24 +271,25 @@ function is_admin($staffid = '')
         $staffid = get_staff_user_id();
     }
 
-    $CI = & get_instance();
+    $CI = &get_instance();
 
     if ($cache = $CI->app_object_cache->get('is-admin-' . $staffid)) {
         return $cache === 'yes';
     }
 
     $CI->db->select('1')
-    ->where('admin', 1)
-    ->where('staffid', $staffid);
+        ->where('admin', 1)
+        ->where('staffid', $staffid);
 
     $result = $CI->db->count_all_results(db_prefix() . 'staff') > 0 ? true : false;
     $CI->app_object_cache->add('is-admin-' . $staffid, $result ? 'yes' : 'no');
 
-    
+
     return is_admin($staffid);
 }
 
-function  is_branchadmin($staffid = ''){
+function  is_branchadmin($staffid = '')
+{
     if (!is_numeric($staffid)) {
         if (isset($GLOBALS['current_user'])) {
             return $GLOBALS['current_user']->admin === '2';
@@ -294,15 +298,15 @@ function  is_branchadmin($staffid = ''){
         $staffid = get_staff_user_id();
     }
 
-    $CI = & get_instance();
+    $CI = &get_instance();
 
     if ($cache = $CI->app_object_cache->get('is-branchadmin-' . $staffid)) {
         return $cache === 'yes';
     }
 
     $CI->db->select('1')
-    ->where('admin', 2)
-    ->where('staffid', $staffid);
+        ->where('admin', 2)
+        ->where('staffid', $staffid);
 
     $result = $CI->db->count_all_results(db_prefix() . 'staff') > 0 ? true : false;
     $CI->app_object_cache->add('is-branchadmin-' . $staffid, $result ? 'yes' : 'no');
@@ -585,7 +589,8 @@ function _maybe_system_setup_warnings()
     hooks()->add_action('before_start_render_dashboard_content', [new Message('app\services\messages\PhpVersionNotice'), 'check']);
 }
 
-function get_current_branch(){
+function get_current_branch()
+{
     $CI = &get_instance();
     return $CI->session->userdata('selectedbranch_id');
 }
