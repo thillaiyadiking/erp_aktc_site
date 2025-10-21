@@ -1,0 +1,16 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2025-07-15 12:02:10 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-15 12:02:10 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-15 12:02:10 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-15 12:02:10 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-15 18:40:48 --> Could not find the language line "E-Sign"
+ERROR - 2025-07-15 18:40:48 --> Could not find the language line "View Dashboard"
+ERROR - 2025-07-15 21:29:47 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-15 21:29:47 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-15 21:29:47 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-15 21:29:47 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-15 21:29:54 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-15 21:29:54 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-15 21:29:54 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-15 21:29:54 --> Could not find the language line "theme_style_button_primary"

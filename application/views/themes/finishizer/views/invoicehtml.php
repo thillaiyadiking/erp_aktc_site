@@ -36,6 +36,7 @@ $generatedString = GenerateQrCode::fromArray([
     new InvoiceTaxAmount($tax_amount)
 ])->toBase64();
 
+
 // Generate QR Code
 $qrCode = QrCode::create($generatedString)
     ->setEncoding(new Encoding('UTF-8'))

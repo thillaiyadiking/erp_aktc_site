@@ -5,7 +5,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 function app_init_admin_sidebar_menu_items()
 {
     $CI = &get_instance();
-    
+
     $CI->app_menu->add_sidebar_menu_item('dashboard', [
         'name'     => _l('als_dashboard'),
         'href'     => admin_url('dashboard/branch_dashboard'),
@@ -16,7 +16,7 @@ function app_init_admin_sidebar_menu_items()
 
     if (
         has_permission('customers', '', 'view')
-        || (have_assigned_customers()|| (!have_assigned_customers() && has_permission('customers', '', 'create')))
+        || (have_assigned_customers() || (!have_assigned_customers() && has_permission('customers', '', 'create')))
     ) {
         $CI->app_menu->add_sidebar_menu_item('customers', [
             'name'     => _l('als_clients'),
@@ -49,7 +49,7 @@ function app_init_admin_sidebar_menu_items()
     }
 
     if (
-    (has_permission('estimates', '', 'view') || has_permission('estimates', '', 'view_own'))
+        (has_permission('estimates', '', 'view') || has_permission('estimates', '', 'view_own'))
         || (staff_has_assigned_estimates() && get_option('allow_staff_view_estimates_assigned') == 1)
     ) {
         $CI->app_menu->add_sidebar_children_item('sales', [
@@ -62,7 +62,7 @@ function app_init_admin_sidebar_menu_items()
     }
 
     if (
-    (has_permission('invoices', '', 'view') || has_permission('invoices', '', 'view_own'))
+        (has_permission('invoices', '', 'view') || has_permission('invoices', '', 'view_own'))
         || (staff_has_assigned_invoices() && get_option('allow_staff_view_invoices_assigned') == 1)
     ) {
         $CI->app_menu->add_sidebar_children_item('sales', [
@@ -88,7 +88,8 @@ function app_init_admin_sidebar_menu_items()
     }
 
     if (
-        has_permission('credit_notes', '', 'view') || has_permission('credit_notes', '', 'view_own')) {
+        has_permission('credit_notes', '', 'view') || has_permission('credit_notes', '', 'view_own')
+    ) {
         $CI->app_menu->add_sidebar_children_item('sales', [
             'slug'     => 'credit_notes',
             'name'     => _l('credit_notes'),
@@ -176,8 +177,8 @@ function app_init_admin_sidebar_menu_items()
                     'href'     => admin_url('tickets/index/' . $status['ticketstatusid']),
                     'position' => $status['statusorder'],
                     'badge'    => [
-                    'value' => $CI->tickets_model->ticket_count($status['ticketstatusid']),
-                    'color' => $status['statuscolor'],
+                        'value' => $CI->tickets_model->ticket_count($status['ticketstatusid']),
+                        'color' => $status['statuscolor'],
                     ],
                 ]);
             }
@@ -206,7 +207,7 @@ function app_init_admin_sidebar_menu_items()
 
     if (has_permission('knowledge_base', '', 'view')) {
         $CI->app_menu->add_setup_menu_item('knowledge-base', [ //         $CI->app_menu->add_sidebar_menu_item('knowledge-base', [
- // تم تغييرها من اللمسة النهائية
+            // تم تغييرها من اللمسة النهائية
             'name'     => _l('als_kb'),
             'href'     => admin_url('knowledge_base'),
             //'icon'     => 'fa-regular fa-folder-closed', // تم تغييرها من اللمسة النهائية
@@ -250,8 +251,8 @@ function app_init_admin_sidebar_menu_items()
         'badge'    => [],
     ]);
 
-    
-    
+
+
     if (is_admin()) {
         $CI->app_menu->add_setup_children_item('utilities', [ // تم تغييرها من اللمسة النهائية
             'slug'     => 'announcements',
@@ -357,7 +358,7 @@ function app_init_admin_sidebar_menu_items()
         ]);
     }
 
-    if (is_admin()||is_branchadmin()) {
+    if (is_admin() || is_branchadmin()) {
         $CI->app_menu->add_setup_menu_item('customers', [
             'collapse' => true,
             'name'     => _l('clients'),
@@ -492,6 +493,13 @@ function app_init_admin_sidebar_menu_items()
             'position' => 20,
             'badge'    => [],
         ]);
+        $CI->app_menu->add_setup_children_item('finance', [
+            'slug'     => 'bank-names',
+            'name'     => _l('acs_banks'),
+            'href'     => admin_url('paymentmodes/banks'),
+            'position' => 20,
+            'badge'    => [],
+        ]);
 
         $CI->app_menu->add_setup_menu_item('contracts', [
             'collapse' => true,
@@ -590,7 +598,4 @@ function app_init_admin_sidebar_menu_items()
         'position' => 10,
         'badge'    => [],
     ]);
-
-
 }
-

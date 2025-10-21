@@ -310,7 +310,7 @@ class Reports extends AdminController
                     WHERE ' . db_prefix() . 'itemable.rel_type="proposal" AND taxname="' . $tax['taxname'] . '" AND taxrate="' . $tax['taxrate'] . '" AND ' . db_prefix() . 'itemable.rel_id=' . db_prefix() . 'proposals.id) as total_tax_single_' . $key);
             }
 
-            $where              = ['AND ' . db_prefix() . 'proposals.branch_id = ' . get_current_branch()];
+            $where              = ['AND '.db_prefix() . 'proposals.branch_id = '.get_current_branch()];
             $custom_date_select = $this->get_where_report_period();
             if ($custom_date_select != '') {
                 array_push($where, $custom_date_select);
@@ -636,14 +636,14 @@ class Reports extends AdminController
                 $custom_date_select = 'AND (' . $field . ' BETWEEN "' . date('Y-m-01') . '" AND "' . date('Y-m-t') . '")';
             } elseif ($months_report == 'this_year') {
                 $custom_date_select = 'AND (' . $field . ' BETWEEN "' .
-                    date('Y-m-d', strtotime(date('Y-01-01'))) .
-                    '" AND "' .
-                    date('Y-m-d', strtotime(date('Y-12-31'))) . '")';
+                date('Y-m-d', strtotime(date('Y-01-01'))) .
+                '" AND "' .
+                date('Y-m-d', strtotime(date('Y-12-31'))) . '")';
             } elseif ($months_report == 'last_year') {
                 $custom_date_select = 'AND (' . $field . ' BETWEEN "' .
-                    date('Y-m-d', strtotime(date(date('Y', strtotime('last year')) . '-01-01'))) .
-                    '" AND "' .
-                    date('Y-m-d', strtotime(date(date('Y', strtotime('last year')) . '-12-31'))) . '")';
+                date('Y-m-d', strtotime(date(date('Y', strtotime('last year')) . '-01-01'))) .
+                '" AND "' .
+                date('Y-m-d', strtotime(date(date('Y', strtotime('last year')) . '-12-31'))) . '")';
             } elseif ($months_report == 'custom') {
                 $from_date = to_sql_date($this->input->post('report_from'));
                 $to_date   = to_sql_date($this->input->post('report_to'));
@@ -667,27 +667,27 @@ class Reports extends AdminController
 
             if ($v && strpos($v->version, '5.7') !== false) {
                 $aColumns = [
-                    'ANY_VALUE(description) as description',
-                    'ANY_VALUE((SUM(' . db_prefix() . 'itemable.qty))) as quantity_sold',
-                    'ANY_VALUE(SUM(rate*qty)) as rate',
-                    'ANY_VALUE(AVG(rate*qty)) as avg_price',
-                ];
+                        'ANY_VALUE(description) as description',
+                        'ANY_VALUE((SUM(' . db_prefix() . 'itemable.qty))) as quantity_sold',
+                        'ANY_VALUE(SUM(rate*qty)) as rate',
+                        'ANY_VALUE(AVG(rate*qty)) as avg_price',
+                    ];
             } else {
                 $aColumns = [
-                    'description as description',
-                    '(SUM(' . db_prefix() . 'itemable.qty)) as quantity_sold',
-                    'SUM(rate*qty) as rate',
-                    'AVG(rate*qty) as avg_price',
-                ];
+                        'description as description',
+                        '(SUM(' . db_prefix() . 'itemable.qty)) as quantity_sold',
+                        'SUM(rate*qty) as rate',
+                        'AVG(rate*qty) as avg_price',
+                    ];
             }
 
             $sIndexColumn = 'id';
             $sTable       = db_prefix() . 'itemable';
             $join         = ['JOIN ' . db_prefix() . 'invoices ON ' . db_prefix() . 'invoices.id = ' . db_prefix() . 'itemable.rel_id'];
-
+            
             $where = [' AND rel_type="invoice"', 'AND status != 5', 'AND status=2'];
-
-
+           
+            
 
             $custom_date_select = $this->get_where_report_period();
             if ($custom_date_select != '') {
@@ -1010,7 +1010,7 @@ class Reports extends AdminController
             $join         = [
                 'LEFT JOIN ' . db_prefix() . 'clients ON ' . db_prefix() . 'clients.userid = ' . db_prefix() . 'invoices.clientid',
             ];
-            $where = [];
+            $where=[];
 
             $result = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, [
                 'userid',
@@ -1116,7 +1116,6 @@ class Reports extends AdminController
             $data['payment_modes'] = $this->payment_modes_model->get('', [], true);
 
             if ($this->input->is_ajax_request()) {
-
                 $aColumns = [
                     db_prefix() . 'expenses.category',
                     'amount',
@@ -1317,8 +1316,7 @@ class Reports extends AdminController
             $data['suppliers'] = $this->expenses_model->get_suppliers();
             $data['payment_modes'] = $this->expenses_model->get_payment_modes();
 
-            // print_r($data);
-            // die;
+
 
             $this->load->view('admin/reports/expenses', $data);
         }
@@ -1379,7 +1377,7 @@ class Reports extends AdminController
 
     private function distinct_taxes($rel_type)
     {
-
+        
         return $this->db->query('SELECT DISTINCT taxname,' . db_prefix() . 'item_tax.taxrate FROM ' . db_prefix() . 'item_tax LEFT JOIN ' . db_prefix() . 'taxes ON ' . db_prefix() . 'item_tax.taxname = ' . db_prefix() . 'taxes.name WHERE rel_type="' . $rel_type . '" ORDER BY taxname ASC')->result_array();
     }
 }

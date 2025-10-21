@@ -24,7 +24,7 @@ $lang['cant_delete_default']                = 'لا يمكن حذف الافتر
 
 # الفاتورة العامة
 $lang['invoice_status_paid']                                 = 'تم الدفع كاملاً';
-$lang['invoice_status_unpaid']                               = 'غير مدفوعة';
+$lang['invoice_status_unpaid']                               = 'آجل';
 $lang['invoice_status_overdue']                              = 'متأخرات';
 $lang['invoice_status_not_paid_completely']                  = 'غير مدفوعة بالكامل';
 $lang['invoice_pdf_heading']                                 = 'الفواتير';
@@ -37,7 +37,7 @@ $lang['invoice_subtotal']                                    = 'الإجمالي
 $lang['invoice_adjustment']                                  = 'تعديل';
 $lang['invoice_total']                                       = 'الإجمالي';
 $lang['invoice_bill_to']                                     = 'الفاتورة لـ';
-$lang['invoice_data_date']                                   = 'رقم الفاتورة:';
+$lang['invoice_data_date']                                   = 'تاريخ الفاتورة:';
 $lang['invoice_data_duedate']                                = 'تاريخ الإستحقاق:';
 $lang['invoice_received_payments']                           = 'المعاملات';
 $lang['invoice_no_payments_found']                           = 'لم يتم العثور على أي مدفوعات لهذه الفاتورة';
@@ -1971,7 +1971,7 @@ $lang['invoice_total_paid']                 = 'مجموع المبالغ الم�
 $lang['invoice_amount_due']                 = 'المبلغ المستحق';
 
 # Calendar
-$lang['calendar_project']                       = 'المشاريع';
+$lang['calendar_project']                       = 'المشروع';
 
 # Leads
 $lang['leads_import_assignee']                   = 'مسؤول (مٌكلف)';
@@ -2068,7 +2068,7 @@ $lang['project_task_assigned_to_user']                                     = 'ت
 $lang['seconds']                                                           = 'ثانية / ثوانً';
 $lang['hours']                                                             = 'ساعة / ساعات';
 $lang['minutes']                                                           = 'دقيقة / دقائق';
-$lang['project']                                                           = 'المشاريع';
+$lang['project']                                                           = 'المشروع';
 $lang['project_lowercase']                                                 = 'المشروع';
 $lang['projects']                                                          = 'المشاريع';
 $lang['projects_lowercase']                                                = 'المشاريع';
@@ -4013,3 +4013,4 @@ $lang['commercial_reg_num']                                = 'السجل الت�
 $lang['View Dashboard']                                    = 'عرض لوحة التحكم';
 $lang['is_supplier']                                       = 'هل هو مورد؟';
 $lang['supplier']                                          = 'المورد';
+$lang['cr_number']                                         = 'الرقم الموحد';

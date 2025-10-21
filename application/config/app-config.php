@@ -17,7 +17,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 * environments.
 *
 */
-define('APP_BASE_URL', 'http://ali.test/erp.aktc/');
+define('APP_BASE_URL', 'http://ali.test/erp_aktc_site/');
 
 /*
 * --------------------------------------------------------------------------

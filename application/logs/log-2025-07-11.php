@@ -1,0 +1,16 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2025-07-11 00:03:09 --> Could not find the language line "E-Sign"
+ERROR - 2025-07-11 00:03:12 --> Could not find the language line "E-Sign"
+ERROR - 2025-07-11 00:03:12 --> Could not find the language line "E-Sign"
+ERROR - 2025-07-11 03:15:13 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-11 03:15:13 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-11 03:15:13 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-11 03:15:13 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-07-11 09:10:03 --> Could not find the language line "E-Sign"
+ERROR - 2025-07-11 09:10:03 --> Could not find the language line "View Dashboard"
+ERROR - 2025-07-11 11:05:06 --> Could not find the language line "E-Sign"
+ERROR - 2025-07-11 11:05:09 --> Could not find the language line "E-Sign"
+ERROR - 2025-07-11 11:05:09 --> Could not find the language line "E-Sign"
+ERROR - 2025-07-11 19:09:35 --> Could not find the language line "E-Sign"
+ERROR - 2025-07-11 19:09:35 --> Could not find the language line "View Dashboard"

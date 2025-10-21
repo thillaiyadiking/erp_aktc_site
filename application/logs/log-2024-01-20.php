@@ -1,0 +1,212 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2024-01-20 04:17:47 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 04:17:47 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 04:17:47 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 04:17:50 --> Could not find the language line "View Dashboard"
+ERROR - 2024-01-20 04:17:50 --> Could not find the language line "View Dashboard"
+ERROR - 2024-01-20 04:17:50 --> Could not find the language line "View Dashboard"
+ERROR - 2024-01-20 04:18:03 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 04:18:11 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 04:18:12 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 04:18:33 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 04:18:33 --> Severity: Notice --> Trying to get property 'id' of non-object C:\xampp-new\htdocs\finishizer_erp3.0.5\application\libraries\App.php 284
+ERROR - 2024-01-20 04:18:36 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 05:42:37 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 05:42:37 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 05:42:37 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 05:42:37 --> Could not find the language line "View Dashboard"
+ERROR - 2024-01-20 05:42:37 --> Could not find the language line "View Dashboard"
+ERROR - 2024-01-20 05:42:37 --> Could not find the language line "View Dashboard"
+ERROR - 2024-01-20 07:14:23 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:30:10 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:30:10 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:30:10 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:30:10 --> Could not find the language line "View Dashboard"
+ERROR - 2024-01-20 07:30:10 --> Could not find the language line "View Dashboard"
+ERROR - 2024-01-20 07:30:10 --> Could not find the language line "View Dashboard"
+ERROR - 2024-01-20 07:30:15 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:30:17 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:30:17 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:30:21 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:30:21 --> Severity: Notice --> Undefined variable: row C:\xampp-new\htdocs\finishizer_erp3.0.5\application\libraries\App.php 289
+ERROR - 2024-01-20 07:30:22 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:31:22 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:31:23 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:52:04 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:52:04 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:52:04 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:52:04 --> Could not find the language line "View Dashboard"
+ERROR - 2024-01-20 07:52:04 --> Could not find the language line "View Dashboard"
+ERROR - 2024-01-20 07:52:04 --> Could not find the language line "View Dashboard"
+ERROR - 2024-01-20 07:52:07 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:52:07 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:52:07 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:52:10 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:52:10 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:52:10 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 07:52:10 --> Could not find the language line "Select"
+ERROR - 2024-01-20 07:52:10 --> Could not find the language line "features"
+ERROR - 2024-01-20 07:52:11 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:52:22 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:52:22 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 07:52:22 --> Severity: Notice --> Array to string conversion C:\xampp-new\htdocs\finishizer_erp3.0.5\system\database\DB_driver.php 1520
+ERROR - 2024-01-20 07:52:22 --> Query error: Unknown column 'branch_assignment' in 'field list' - Invalid query: UPDATE `tblstaff` SET `firstname` = 'br1_', `lastname` = 'admin', `email` = 'br1admin@finishizer.com', `hourly_rate` = '0.00', `phonenumber` = '', `facebook` = '', `linkedin` = '', `skype` = '', `default_language` = '', `email_signature` = '', `direction` = '', `branch_assignment` = Array, `role` = '', `branch_id` = 0, `admin` = 2, `is_not_staff` = 0
+WHERE `staffid` = '4'
+ERROR - 2024-01-20 08:06:03 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:06:03 --> Severity: Notice --> Undefined variable: staffid C:\xampp-new\htdocs\finishizer_erp3.0.5\application\models\Staff_model.php 599
+ERROR - 2024-01-20 08:06:03 --> Query error: Column 'staffid' cannot be null - Invalid query: INSERT INTO `tblstaff_branch_assignment` (`staffid`, `branch_id`) VALUES (NULL, '2')
+ERROR - 2024-01-20 08:07:55 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:08:00 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:08:00 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:08:00 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:08:00 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:08:00 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:08:01 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:08:28 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:08:28 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:08:28 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:08:28 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:08:28 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:08:30 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:08:40 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:08:40 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:08:45 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:08:45 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:08:45 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:08:45 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:08:45 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:08:46 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:50:47 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:50:47 --> Query error: Table 'finishizer_erp.tbltblstaff_branch_assignment' doesn't exist - Invalid query: SELECT `branch_id`
+FROM `tbltblstaff_branch_assignment`
+WHERE `staffid` = '4'
+ERROR - 2024-01-20 08:51:06 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:51:06 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:51:06 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:51:06 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:51:06 --> Severity: Notice --> Undefined variable: selectedFruits C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:51:06 --> Severity: Warning --> in_array() expects parameter 2 to be array, null given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:51:06 --> Severity: Notice --> Undefined variable: selectedFruits C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:51:06 --> Severity: Warning --> in_array() expects parameter 2 to be array, null given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:51:06 --> Severity: Notice --> Undefined variable: selectedFruits C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:51:06 --> Severity: Warning --> in_array() expects parameter 2 to be array, null given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:51:06 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:51:07 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:51:33 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:51:33 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:51:33 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:51:33 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:51:33 --> Severity: Notice --> Undefined variable: selectedFruits C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:51:33 --> Severity: Warning --> in_array() expects parameter 2 to be array, null given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:51:33 --> Severity: Notice --> Undefined variable: selectedFruits C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:51:33 --> Severity: Warning --> in_array() expects parameter 2 to be array, null given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:51:33 --> Severity: Notice --> Undefined variable: selectedFruits C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:51:33 --> Severity: Warning --> in_array() expects parameter 2 to be array, null given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:51:33 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:51:33 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:52:02 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:52:02 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:52:02 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:52:02 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:52:02 --> Severity: Notice --> Undefined variable: selectedFruits C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:52:02 --> Severity: Warning --> in_array() expects parameter 2 to be array, null given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:52:02 --> Severity: Notice --> Undefined variable: selectedFruits C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:52:02 --> Severity: Warning --> in_array() expects parameter 2 to be array, null given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:52:02 --> Severity: Notice --> Undefined variable: selectedFruits C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:52:02 --> Severity: Warning --> in_array() expects parameter 2 to be array, null given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:52:02 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:52:03 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:52:46 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:52:46 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:52:46 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:52:46 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:52:46 --> Severity: Notice --> Undefined variable: selectedFruits C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:52:46 --> Severity: Warning --> in_array() expects parameter 2 to be array, null given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:52:46 --> Severity: Notice --> Undefined variable: selectedFruits C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:52:46 --> Severity: Warning --> in_array() expects parameter 2 to be array, null given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:52:46 --> Severity: Notice --> Undefined variable: selectedFruits C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:52:46 --> Severity: Warning --> in_array() expects parameter 2 to be array, null given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 208
+ERROR - 2024-01-20 08:52:46 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:52:47 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:53:33 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:53:33 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:53:33 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:53:33 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:53:33 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:53:34 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:54:12 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:54:12 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:54:12 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:54:12 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:54:12 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:54:12 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:56:20 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:56:20 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:56:20 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:56:20 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:56:20 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:56:20 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:56:32 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:56:32 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:56:33 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:57:19 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:57:19 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:57:19 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:57:19 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:57:19 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:57:20 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:59:01 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:59:02 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:59:02 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:59:02 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:59:02 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:59:02 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:59:20 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:59:20 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:59:20 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:59:20 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:59:20 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:59:20 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:59:44 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:59:44 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:59:44 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:59:44 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:59:44 --> Could not find the language line "features"
+ERROR - 2024-01-20 08:59:45 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:59:59 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:59:59 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 08:59:59 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 08:59:59 --> Could not find the language line "Select"
+ERROR - 2024-01-20 08:59:59 --> Could not find the language line "features"
+ERROR - 2024-01-20 09:00:00 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:01:59 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:01:59 --> Severity: error --> Exception: Call to undefined function push() C:\xampp-new\htdocs\finishizer_erp3.0.5\application\models\Staff_model.php 901
+ERROR - 2024-01-20 09:03:25 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:03:25 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:03:25 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 09:03:25 --> Could not find the language line "Select"
+ERROR - 2024-01-20 09:03:25 --> Severity: Warning --> in_array() expects parameter 2 to be array, string given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 210
+ERROR - 2024-01-20 09:03:25 --> Severity: Warning --> in_array() expects parameter 2 to be array, string given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 210
+ERROR - 2024-01-20 09:03:25 --> Severity: Warning --> in_array() expects parameter 2 to be array, string given C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 210
+ERROR - 2024-01-20 09:03:25 --> Could not find the language line "features"
+ERROR - 2024-01-20 09:03:27 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:04:01 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:04:01 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:04:01 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 09:04:01 --> Could not find the language line "Select"
+ERROR - 2024-01-20 09:04:01 --> Could not find the language line "features"
+ERROR - 2024-01-20 09:04:01 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:04:21 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:04:21 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:04:21 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:04:23 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:04:23 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:04:23 --> Could not find the language line "Assign to"
+ERROR - 2024-01-20 09:04:23 --> Severity: Notice --> Undefined offset: 0 C:\xampp-new\htdocs\finishizer_erp3.0.5\application\views\admin\staff\member.php 204
+ERROR - 2024-01-20 09:04:23 --> Could not find the language line "Select"
+ERROR - 2024-01-20 09:04:23 --> Could not find the language line "features"
+ERROR - 2024-01-20 09:04:24 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:04:31 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:04:31 --> Could not find the language line "Branches"
+ERROR - 2024-01-20 09:04:31 --> Could not find the language line "Branches"

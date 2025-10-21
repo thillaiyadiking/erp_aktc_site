@@ -113,28 +113,37 @@ foreach ($rResult as $aRow) {
 
     $row[] = _d($aRow['deadline']);
 
-    $membersOutput = '<div class="tw-flex -tw-space-x-1">';
-    $members       = explode(',', $aRow['members']);
+   $membersOutput = '<div class="tw-flex -tw-space-x-1">';
     $exportMembers = '';
-    foreach ($members as $key => $member) {
-        if ($member != '') {
-            $members_ids = explode(',', $aRow['members_ids']);
-            $member_id   = $members_ids[$key];
-            $membersOutput .= '<a href="' . admin_url('profile/' . $member_id) . '">' .
-            staff_profile_image($member_id, [
-                'tw-inline-block tw-h-7 tw-w-7 tw-rounded-full tw-ring-2 tw-ring-white',
-                ], 'small', [
-                'data-toggle' => 'tooltip',
-                'data-title'  => $member,
-                ]) . '</a>';
-            // For exporting
-            $exportMembers .= $member . ', ';
+
+    // Check if members is not empty and contains at least one valid name
+    if (!empty($aRow['members']) && trim($aRow['members']) !== '') {
+        $members = array_filter(array_map('trim', explode(',', $aRow['members'])));
+        $members_ids = explode(',', $aRow['members_ids']);
+
+        foreach ($members as $key => $member) {
+            if ($member !== '') {
+                $member_id = isset($members_ids[$key]) ? $members_ids[$key] : null;
+
+                if ($member_id) {
+                    $membersOutput .= '<a href="' . admin_url('profile/' . $member_id) . '">' .
+                        staff_profile_image($member_id, [
+                            'tw-inline-block tw-h-7 tw-w-7 tw-rounded-full tw-ring-2 tw-ring-white',
+                        ], 'small', [
+                            'data-toggle' => 'tooltip',
+                            'data-title'  => htmlspecialchars($member),
+                        ]) . '</a>';
+
+                    // For exporting
+                    $exportMembers .= $member . ', ';
+                }
+            }
         }
     }
 
-     $membersOutput .= '<span class="hide">' . trim($exportMembers, ', ') . '</span>';
-     $membersOutput .= '</div>';
-     $row[] = $membersOutput;
+    $membersOutput .= '<span class="hide">' . trim($exportMembers, ', ') . '</span>';
+    $membersOutput .= '</div>';
+    $row[] = $membersOutput;
 
     $status = get_project_status_by_id($aRow['status']);
     $row[]  = '<span class="label project-status-' . $aRow['status'] . '" style="color:' . $status['color'] . ';border:1px solid ' . adjust_hex_brightness($status['color'], 0.4) . ';background: ' . adjust_hex_brightness($status['color'], 0.04) . ';">' . $status['name'] . '</span>';

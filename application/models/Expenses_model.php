@@ -66,8 +66,7 @@ class Expenses_model extends App_Model
             return $expense;
         }
         $this->db->order_by('date', 'desc');
-
-        if ($only_last) {
+         if ($only_last) {
             $this->db->order_by(db_prefix() . 'expenses.id', 'desc');
             $this->db->limit(1);
         }
@@ -354,7 +353,7 @@ class Expenses_model extends App_Model
      */
     public function update($data, $id)
     {
-
+        
         $original_expense = $this->get($id);
 
         $data['date'] = to_sql_date($data['date']);
@@ -794,7 +793,7 @@ class Expenses_model extends App_Model
     {
         return $this->db->query('SELECT DISTINCT(YEAR(date)) as year FROM ' . db_prefix() . 'expenses ORDER by year DESC')->result_array();
     }
-
+    
     public function get_clients($id = '')
     {
         //$bid = get_current_branch();
@@ -821,7 +820,7 @@ class Expenses_model extends App_Model
 
         return $this->db->get(db_prefix() . 'staff')->result_array();
     }
-    public function get_projects($id = '')
+     public function get_projects($id = '')
     {
         //$bid = get_current_branch();
         if (is_numeric($id)) {

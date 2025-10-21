@@ -87,4 +87,73 @@ class Paymentmodes extends AdminController
             $this->payment_modes_model->change_payment_mode_show_to_client_status($id, $status);
         }
     }
+
+
+    // Banks Related Functions
+    public function banks()
+    {
+        if ($this->input->is_ajax_request()) {
+            $this->app->get_table_data('banks');
+        }
+
+        $data['title'] = _l('banks');
+        $this->load->view('admin/paymentmodes/banks', $data);
+    }
+
+    /* Add or update payment mode / ajax */
+    public function all_banks()
+    {
+        $success = $this->payment_modes_model->get_all_banks('', [], true);
+        echo json_encode($success);
+    }
+
+    /* Add or update payment mode / ajax */
+    public function banks_manage()
+    {
+
+        if ($this->input->post()) {
+            $data = $this->input->post();
+            //$data['branch_id']=$this->session->userdata('selectedbranch_id');
+            if ($data['bank_id'] == '') {
+                $message = '';
+                $success = $this->payment_modes_model->bank_add($data);
+                if ($success) {
+                    $message = _l('added_successfully', _l('bank'));
+                }
+                echo json_encode([
+                    'success' => $success,
+                    'message' => $message,
+                ]);
+            } else {
+                $message = '';
+                $success = $this->payment_modes_model->bank_edit($data);
+                if ($success) {
+                    $message = _l('updated_successfully', _l('bank'));
+                }
+                echo json_encode([
+                    'success' => $success,
+                    'message' => $message,
+                ]);
+            }
+        }
+    }
+
+    /* Delete payment mode */
+    public function bank_delete($id)
+    {
+
+        if (!$id) {
+            redirect(admin_url('paymentmodes/banks'));
+        }
+        $response = $this->payment_modes_model->bank_delete($id);
+        if (is_array($response) && isset($response['referenced'])) {
+            set_alert('warning', _l('is_referenced', _l('payment_mode_lowercase')));
+        } elseif ($response == true) {
+            set_alert('success', _l('deleted', _l('payment_mode')));
+        } else {
+            set_alert('warning', _l('problem_deleting', _l('payment_mode_lowercase')));
+        }
+        redirect(admin_url('paymentmodes/banks'));
+    }
+    // Banks Related Functions
 }

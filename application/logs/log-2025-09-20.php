@@ -1,0 +1,16 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2025-09-20 06:35:23 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-09-20 06:35:23 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-09-20 09:33:47 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-09-20 09:33:47 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-09-20 09:33:47 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-09-20 09:33:47 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-09-20 17:42:14 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-09-20 17:42:14 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-09-20 23:02:05 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-09-20 23:02:05 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-09-20 23:02:05 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-09-20 23:02:05 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-09-20 23:06:15 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-09-20 23:06:15 --> Could not find the language line "theme_style_button_primary"

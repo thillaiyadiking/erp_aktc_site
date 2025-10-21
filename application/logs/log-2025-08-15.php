@@ -1,0 +1,56 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2025-08-15 00:42:14 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 00:42:14 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 01:06:29 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 01:06:29 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 02:48:50 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 02:48:50 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 02:48:57 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 02:48:57 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 02:49:01 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 02:49:01 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 02:49:05 --> Could not find the language line "E-Sign"
+ERROR - 2025-08-15 03:00:17 --> Could not find the language line "E-Sign"
+ERROR - 2025-08-15 03:00:17 --> Could not find the language line "View Dashboard"
+ERROR - 2025-08-15 03:00:29 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 03:00:29 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 03:00:29 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 03:00:29 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 03:23:08 --> Could not find the language line "E-Sign"
+ERROR - 2025-08-15 03:23:08 --> Could not find the language line "View Dashboard"
+ERROR - 2025-08-15 08:13:48 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:13:48 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:13:48 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:13:48 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:27:17 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:27:17 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:27:17 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:27:17 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:27:28 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:27:28 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:27:28 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:27:28 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:27:37 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:27:37 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:27:37 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 08:27:37 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 10:00:51 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 10:00:51 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 10:00:51 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 10:00:51 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-15 14:58:50 --> Could not find the language line "E-Sign"
+ERROR - 2025-08-15 14:58:50 --> Could not find the language line "View Dashboard"
+ERROR - 2025-08-15 20:26:24 --> Could not find the language line "E-Sign"
+ERROR - 2025-08-15 20:26:24 --> Could not find the language line "View Dashboard"
+ERROR - 2025-08-15 20:34:12 --> Could not find the language line "E-Sign"
+ERROR - 2025-08-15 20:34:13 --> Could not find the language line "E-Sign"
+ERROR - 2025-08-15 20:34:13 --> Could not find the language line "E-Sign"
+ERROR - 2025-08-15 17:34:34 --> 404 Page Not Found: /index
+ERROR - 2025-08-15 17:34:34 --> 404 Page Not Found: /index
+ERROR - 2025-08-15 17:34:34 --> 404 Page Not Found: /index
+ERROR - 2025-08-15 17:34:34 --> 404 Page Not Found: /index
+ERROR - 2025-08-15 17:34:34 --> 404 Page Not Found: /index
+ERROR - 2025-08-15 17:34:34 --> 404 Page Not Found: /index
+ERROR - 2025-08-15 17:34:34 --> 404 Page Not Found: /index
+ERROR - 2025-08-15 20:47:07 --> 404 Page Not Found: /index

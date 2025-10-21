@@ -72,8 +72,8 @@
                         </div>
 
                         <hr />
-
-
+                        
+                        
                         <!-- ++++++++++++++++++++++++   Payment Mode Wise    +++++++++++++++++++++++++++++++++++++++++++++ -->
                         <div class="table-responsive">
                             <table class="table table-bordered table-condensed table-hover"
@@ -274,7 +274,6 @@
                         </div>
                         <hr />
 
-
                         <!-- ++++++++++++++++++++++++   Projects Wise    +++++++++++++++++++++++++++++++++++++++++++++ -->
                         <div class="table-responsive">
                             <table class="table table-bordered table-condensed table-hover"
@@ -375,6 +374,8 @@
                         </div>
                         <hr />
 
+                   
+
                         <!-- ++++++++++++++++++++++++   Client or Customer Wise    +++++++++++++++++++++++++++++++++++++++++++++ -->
                         <div class="table-responsive">
                             <table class="table table-bordered table-condensed table-hover"
@@ -474,6 +475,8 @@
                             </table>
                         </div>
                         <hr />
+
+
 
                         <!-- ++++++++++++++++++++++++   Recipient Staff Wise    +++++++++++++++++++++++++++++++++++++++++++++ -->
                         <div class="table-responsive">
@@ -825,6 +828,9 @@
                             </table>
                         </div>
                         <hr />
+
+
+
 
 
                         <div class="row">

@@ -1,0 +1,21 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2025-08-28 06:57:49 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 06:57:49 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 08:46:41 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 08:46:41 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 08:46:41 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 08:46:41 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 11:20:49 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 11:20:49 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 08:55:31 --> 404 Page Not Found: /index
+ERROR - 2025-08-28 11:57:08 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 11:57:08 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 11:57:17 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 11:57:17 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 12:08:39 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 12:08:39 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 12:21:40 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 12:21:40 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 12:26:46 --> Could not find the language line "theme_style_button_primary"
+ERROR - 2025-08-28 12:26:46 --> Could not find the language line "theme_style_button_primary"

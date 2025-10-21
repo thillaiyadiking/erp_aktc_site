@@ -1,0 +1,38 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2024-03-24 01:13:26 --> Could not find the language line "E-Sign"
+ERROR - 2024-03-24 01:13:26 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 01:13:26 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 01:13:26 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 01:13:26 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 01:13:26 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 10:06:23 --> Could not find the language line "E-Sign"
+ERROR - 2024-03-24 10:06:23 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 10:06:23 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 10:06:23 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 10:06:23 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 10:06:23 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 10:24:48 --> Could not find the language line "E-Sign"
+ERROR - 2024-03-24 10:24:48 --> Severity: Warning --> Attempt to read property "branch_name" on array /home/u534610856/domains/elegance77.com/public_html/__erp/application/views/admin/includes/header.php 88
+ERROR - 2024-03-24 07:24:48 --> 404 Page Not Found: /index
+ERROR - 2024-03-24 10:24:52 --> Could not find the language line "E-Sign"
+ERROR - 2024-03-24 10:24:52 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 10:24:52 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 10:24:52 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 10:24:52 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 10:24:52 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 10:24:55 --> Could not find the language line "E-Sign"
+ERROR - 2024-03-24 10:24:55 --> Severity: Warning --> Attempt to read property "branch_name" on array /home/u534610856/domains/elegance77.com/public_html/__erp/application/views/admin/includes/header.php 88
+ERROR - 2024-03-24 07:24:55 --> 404 Page Not Found: /index
+ERROR - 2024-03-24 17:43:47 --> Could not find the language line "E-Sign"
+ERROR - 2024-03-24 17:43:47 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 17:43:47 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 17:43:47 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 17:43:47 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 17:43:47 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 20:57:53 --> Could not find the language line "E-Sign"
+ERROR - 2024-03-24 20:57:53 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 20:57:53 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 20:57:53 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 20:57:53 --> Could not find the language line "View Dashboard"
+ERROR - 2024-03-24 20:57:53 --> Could not find the language line "View Dashboard"

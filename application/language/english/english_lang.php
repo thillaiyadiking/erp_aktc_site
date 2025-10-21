@@ -3913,7 +3913,7 @@ $lang['payment_gateway_fee_fixed']                          = 'Fixed Fee';
 $lang['payment_attempt_amount']                             = 'Invoice Total';
 $lang['payment_attempt_fee']                                = 'Payment Fee';
 $lang['feature']                                            = 'Feature';
-$lang['capabilities']                                       = 'Capabilities';
+$lang['capabilities']                                       = 'Capabilities'; 
 
 //Branches
 $lang['branches']                                          = 'Branches';
@@ -3933,4 +3933,6 @@ $lang['Purchased_Employee']                                = 'Purchased Employee
 $lang['Recipient_Employee']                                = 'Recipient Employee';
 $lang['commercial_reg_num']                                = ' Commercial Registration Number';
 $lang['branch_info']                                       = 'Branch Information';
-$lang['is_supplier']                                       = 'Is supplier?';
+$lang['is_supplier']                                       = 'Is supplier?';  
+$lang['cr_number']                                         = 'Unified Number'; // CR Number
+$lang['google_map_address']                                = 'Google Map Address';

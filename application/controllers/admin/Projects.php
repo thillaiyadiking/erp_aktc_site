@@ -77,6 +77,10 @@ class Projects extends AdminController
 
         if ($this->input->post()) {
             $data                = $this->input->post();
+            // Convert map_locations array to JSON if it exists
+            if (isset($data['g_map_locations']) && is_array($data['g_map_locations'])) {
+                $data['g_map_locations'] = json_encode($data['g_map_locations'], JSON_UNESCAPED_UNICODE);
+            }
             $data['description'] = html_purify($this->input->post('description', false));
             if ($id == '') {
                 if (!staff_can('create', 'projects')) {

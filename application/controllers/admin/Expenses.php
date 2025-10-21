@@ -73,12 +73,12 @@ class Expenses extends AdminController
                     'url' => admin_url('expenses/expense'),
                 ]);
                 die;
-            }
-            if (!has_permission('expenses', '', 'edit')) {
+            } 
+             if (!has_permission('expenses', '', 'edit')) {
                 set_alert('danger', _l('access_denied'));
                 echo json_encode([
-                    'url' => admin_url('expenses/expense/' . $id),
-                ]);
+                        'url' => admin_url('expenses/expense/' . $id),
+                    ]);
                 die;
             }
             $success = $this->expenses_model->update($this->input->post(), $id);
@@ -86,19 +86,20 @@ class Expenses extends AdminController
                 set_alert('success', _l('updated_successfully', _l('expense')));
             }
             echo json_encode([
-                'url'       => admin_url('expenses/list_expenses/' . $id),
-                'expenseid' => $id,
-            ]);
+                    'url'       => admin_url('expenses/list_expenses/' . $id),
+                    'expenseid' => $id,
+                ]);
             die;
         }
         if ($id == '') {
             $title = _l('add_new', _l('expense'));
-
+            
             $last_expense = $this->expenses_model->get('', [], true);
             if (!empty($last_expense) && isset($last_expense[0]['id'])) {
                 $id = $last_expense[0]['id'];
                 $data['last_inserted_expense'] = $this->expenses_model->get($id);
             }
+            
         } else {
             $data['expense'] = $this->expenses_model->get($id);
 
@@ -124,8 +125,8 @@ class Expenses extends AdminController
             'invoices_only !=' => 1,
         ]);
         $data['bodyclass']  = 'expense';
-        $data['currencies'] = $this->currencies_model->get();
-        $data['members'] = $this->staff_model->get();
+        $data['currencies'] = $this->currencies_model->get(); 
+        $data['members'] = $this->staff_model->get(); 
         $data['clients'] = $this->clients_model->get('', 'is_supplier = 1');
         $data['title'] = $title;
         $this->load->view('admin/expenses/expense', $data);

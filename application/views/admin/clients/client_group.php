@@ -27,40 +27,39 @@
     </div>
 </div>
 <script>
-    window.addEventListener('load', function() {
-        appValidateForm($('#customer-group-modal'), {
-            name: 'required'
-        }, manage_customer_groups);
+    window.addEventListener('load',function(){
+       appValidateForm($('#customer-group-modal'), {
+        name: 'required'
+    }, manage_customer_groups);
 
-        $('#customer_group_modal').on('show.bs.modal', function(e) {
-            var invoker = $(e.relatedTarget);
-            var group_id = $(invoker).data('id');
-            $('#customer_group_modal .add-title').removeClass('hide');
-            $('#customer_group_modal .edit-title').addClass('hide');
-            $('#customer_group_modal input[name="id"]').val('');
-            $('#customer_group_modal input[name="name"]').val('');
-            // is from the edit button
-            if (typeof(group_id) !== 'undefined') {
-                $('#customer_group_modal input[name="id"]').val(group_id);
-                $('#customer_group_modal .add-title').addClass('hide');
-                $('#customer_group_modal .edit-title').removeClass('hide');
-                $('#customer_group_modal input[name="name"]').val($(invoker).parents('tr').find('td').eq(0).text());
-            }
-        });
+       $('#customer_group_modal').on('show.bs.modal', function(e) {
+        var invoker = $(e.relatedTarget);
+        var group_id = $(invoker).data('id');
+        $('#customer_group_modal .add-title').removeClass('hide');
+        $('#customer_group_modal .edit-title').addClass('hide');
+        $('#customer_group_modal input[name="id"]').val('');
+        $('#customer_group_modal input[name="name"]').val('');
+        // is from the edit button
+        if (typeof(group_id) !== 'undefined') {
+            $('#customer_group_modal input[name="id"]').val(group_id);
+            $('#customer_group_modal .add-title').addClass('hide');
+            $('#customer_group_modal .edit-title').removeClass('hide');
+            $('#customer_group_modal input[name="name"]').val($(invoker).parents('tr').find('td').eq(0).text());
+        }
     });
-
+   });
     function manage_customer_groups(form) {
         var data = $(form).serialize();
         var url = form.action;
         $.post(url, data).done(function(response) {
             response = JSON.parse(response);
             if (response.success == true) {
-                if ($.fn.DataTable.isDataTable('.table-customer-groups')) {
+                if($.fn.DataTable.isDataTable('.table-customer-groups')){
                     $('.table-customer-groups').DataTable().ajax.reload();
                 }
-                if ($('body').hasClass('dynamic-create-groups') && typeof(response.id) != 'undefined') {
+                if($('body').hasClass('dynamic-create-groups') && typeof(response.id) != 'undefined') {
                     var groups = $('select[name="groups_in[]"]');
-                    groups.prepend('<option value="' + response.id + '">' + response.name + '</option>');
+                    groups.prepend('<option value="'+response.id+'">'+response.name+'</option>');
                     groups.selectpicker('refresh');
                 }
                 alert_float('success', response.message);
@@ -69,4 +68,5 @@
         });
         return false;
     }
+
 </script>
