@@ -344,7 +344,7 @@ class Payment_modes_model extends App_Model
 
         $this->db->insert(db_prefix() . 'banks', [
             'name'                => $data['name'],
-            'is_active' => $data['active'] ==  'on' ? 1 : 0,
+            'is_active' => (isset($data['active']) ? '1' : '0'),
         ]);
 
         $insert_id = $this->db->insert_id();

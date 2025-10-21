@@ -146,11 +146,11 @@
                                     <div class="bank-group row mb-2">
                                         <div class="col-md-4">
                                             <input type="text" class="form-control iban-input" name="iban[]" placeholder="IBAN"
-                                                value="<?= htmlspecialchars($detail['iban']) ?>" required>
+                                                value="<?= htmlspecialchars($detail['iban']) ?>">
                                         </div>
                                         <div class="col-md-4">
                                             <input type="text" class="form-control" name="account[]" placeholder="Account"
-                                                value="<?= htmlspecialchars($detail['account']) ?>" required>
+                                                value="<?= htmlspecialchars($detail['account']) ?>">
                                         </div>
                                         <div class="col-md-3">
                                             <!-- Dropdown for predefined banks -->
@@ -573,10 +573,10 @@
         div.className = 'bank-group row mb-2';
         div.innerHTML = `
             <div class="col-md-4">
-                <input type="text" class="form-control iban-input" name="iban[]" placeholder="IBAN" required>
+                <input type="text" class="form-control iban-input" name="iban[]" placeholder="IBAN">
             </div>
             <div class="col-md-4">
-                <input type="text" class="form-control" name="account[]" placeholder="Account" required>
+                <input type="text" class="form-control" name="account[]" placeholder="Account">
             </div>
             <div class="col-md-3">
                 
