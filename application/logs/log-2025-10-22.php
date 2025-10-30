@@ -242,3 +242,23 @@ ERROR - 2025-10-22 10:33:33 --> 404 Page Not Found: /index
 ERROR - 2025-10-22 10:33:33 --> 404 Page Not Found: /index
 ERROR - 2025-10-22 13:33:34 --> Could not find the language line "E-Sign"
 ERROR - 2025-10-22 13:33:35 --> Could not find the language line "E-Sign"
+ERROR - 2025-10-22 13:35:59 --> Could not find the language line "E-Sign"
+ERROR - 2025-10-22 20:14:41 --> Could not find the language line "E-Sign"
+ERROR - 2025-10-22 17:14:44 --> 404 Page Not Found: /index
+ERROR - 2025-10-22 17:14:45 --> 404 Page Not Found: /index
+ERROR - 2025-10-22 17:14:45 --> 404 Page Not Found: /index
+ERROR - 2025-10-22 17:14:45 --> 404 Page Not Found: /index
+ERROR - 2025-10-22 17:14:45 --> 404 Page Not Found: /index
+ERROR - 2025-10-22 17:14:45 --> 404 Page Not Found: /index
+ERROR - 2025-10-22 17:14:45 --> 404 Page Not Found: /index
+ERROR - 2025-10-22 20:15:02 --> Could not find the language line "E-Sign"
+ERROR - 2025-10-22 20:15:02 --> Could not find the language line "E-Sign"
+ERROR - 2025-10-22 20:38:00 --> Could not find the language line "E-Sign"
+ERROR - 2025-10-22 20:38:00 --> Could not find the language line "View Dashboard"
+ERROR - 2025-10-22 17:38:01 --> 404 Page Not Found: /index
+ERROR - 2025-10-22 17:38:01 --> 404 Page Not Found: /index
+ERROR - 2025-10-22 17:38:01 --> 404 Page Not Found: /index
+ERROR - 2025-10-22 17:38:01 --> 404 Page Not Found: /index
+ERROR - 2025-10-22 17:38:01 --> 404 Page Not Found: /index
+ERROR - 2025-10-22 17:38:01 --> 404 Page Not Found: /index
+ERROR - 2025-10-22 17:38:02 --> 404 Page Not Found: /index
